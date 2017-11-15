@@ -7,6 +7,7 @@ package ems;
 
 import hashtables.Gender;
 import hashtables.Location;
+import hashtables.MyHashTable;
 import java.awt.Color;
 import javax.swing.JPanel;
 
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 public class JFrame extends javax.swing.JFrame {
     String fN,lN;
     Gender gender;
+    MyHashTable myt;
     int empNum;
     Location location;
     double deductRate,hourlyWage,hoursPerWeek,weeksPerYear;
