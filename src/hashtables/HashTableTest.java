@@ -8,22 +8,22 @@ public class HashTableTest {
 
 		EmployeeInfo someEmp;
 
-		someEmp = new EmployeeInfo(757442, "Daffy", "Duck", Gender.MALE, Location.Toronto, 0.23);
+		someEmp = new EmployeeInfo(757442, "Daffy", "Duck", Gender.MALE, Location.TORONTO, 0.23);
 		theHT.addEmployee(someEmp);
 
-		someEmp = new EmployeeInfo(907263, "Leghorn", "Foghorn", Gender.OTHER, Location.Mississauga, 0.19);
+		someEmp = new EmployeeInfo(907263, "Leghorn", "Foghorn", Gender.OTHER, Location.MISSISSAUGA, 0.19);
 		theHT.addEmployee(someEmp);
 
-		someEmp = new EmployeeInfo(186484, "Lola", "Bunny", Gender.FEMALE, Location.Brampton, 0.20);
+		someEmp = new EmployeeInfo(186484, "Lola", "Bunny", Gender.FEMALE, Location.BRAMPTON, 0.20);
 		theHT.addEmployee(someEmp);
 
-		someEmp = new EmployeeInfo(888885, "Bugs", "Bunny", Gender.MALE, Location.Toronto, 0.21);
+		someEmp = new EmployeeInfo(888885, "Bugs", "Bunny", Gender.MALE, Location.TORONTO, 0.21);
 		theHT.addEmployee(someEmp);
 
-		someEmp = new EmployeeInfo(795306, "Marvin", "Martian", Gender.OTHER, Location.Mississauga, 0.15);
+		someEmp = new EmployeeInfo(795306, "Marvin", "Martian", Gender.OTHER, Location.MISSISSAUGA, 0.15);
 		theHT.addEmployee(someEmp);
 
-		someEmp = new EmployeeInfo(390217, "Sylvester", "Cat", Gender.MALE, Location.Brampton, 0.27);
+		someEmp = new EmployeeInfo(390217, "Sylvester", "Cat", Gender.MALE, Location.BRAMPTON, 0.27);
 		theHT.addEmployee(someEmp);
 
 		theHT.displayContents();
