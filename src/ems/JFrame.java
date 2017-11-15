@@ -5,6 +5,9 @@
  */
 package ems;
 
+import java.awt.Color;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Ani
@@ -31,6 +34,11 @@ public class JFrame extends javax.swing.JFrame {
         locationGroup = new javax.swing.ButtonGroup();
         employmentStatus = new javax.swing.ButtonGroup();
         sidePanel = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        addButton = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        removeButton = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         parentPanel = new javax.swing.JPanel();
         addPanel = new javax.swing.JPanel();
         fNField = new javax.swing.JTextField();
@@ -57,20 +65,105 @@ public class JFrame extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         removePanel = new javax.swing.JPanel();
+        partTimePanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         sidePanel.setBackground(new java.awt.Color(100, 181, 246));
 
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("<html>Employee<br>Management<br>System</html>");
+
+        addButton.setBackground(new java.awt.Color(100, 181, 246));
+        addButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addButtonMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("+  ADD");
+
+        javax.swing.GroupLayout addButtonLayout = new javax.swing.GroupLayout(addButton);
+        addButton.setLayout(addButtonLayout);
+        addButtonLayout.setHorizontalGroup(
+            addButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addButtonLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        addButtonLayout.setVerticalGroup(
+            addButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(addButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        removeButton.setBackground(new java.awt.Color(100, 181, 246));
+        removeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removeButtonMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                removeButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                removeButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("-  REMOVE");
+
+        javax.swing.GroupLayout removeButtonLayout = new javax.swing.GroupLayout(removeButton);
+        removeButton.setLayout(removeButtonLayout);
+        removeButtonLayout.setHorizontalGroup(
+            removeButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, removeButtonLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(15, 15, 15))
+        );
+        removeButtonLayout.setVerticalGroup(
+            removeButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(removeButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 138, Short.MAX_VALUE)
+            .addGroup(sidePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addComponent(removeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(sidePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         parentPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -221,7 +314,7 @@ public class JFrame extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(addPanelLayout.createSequentialGroup()
                                 .addComponent(jRadioButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1)))))
                 .addGap(12, 12, 12))
         );
@@ -278,7 +371,7 @@ public class JFrame extends javax.swing.JFrame {
                         .addComponent(jRadioButton2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(14, 14, 14))))
         );
@@ -291,14 +384,29 @@ public class JFrame extends javax.swing.JFrame {
         removePanel.setLayout(removePanelLayout);
         removePanelLayout.setHorizontalGroup(
             removePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 416, Short.MAX_VALUE)
+            .addGap(0, 408, Short.MAX_VALUE)
         );
         removePanelLayout.setVerticalGroup(
             removePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 365, Short.MAX_VALUE)
+            .addGap(0, 373, Short.MAX_VALUE)
         );
 
         parentPanel.add(removePanel, "card3");
+
+        partTimePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout partTimePanelLayout = new javax.swing.GroupLayout(partTimePanel);
+        partTimePanel.setLayout(partTimePanelLayout);
+        partTimePanelLayout.setHorizontalGroup(
+            partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 408, Short.MAX_VALUE)
+        );
+        partTimePanelLayout.setVerticalGroup(
+            partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 373, Short.MAX_VALUE)
+        );
+
+        parentPanel.add(partTimePanel, "card4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,6 +462,46 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
+    private void addButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseEntered
+        // TODO add your handling code here:
+        setBackground(addButton);
+    }//GEN-LAST:event_addButtonMouseEntered
+
+    private void removeButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseExited
+        // TODO add your handling code here:
+        resetBackground(removeButton);
+    }//GEN-LAST:event_removeButtonMouseExited
+
+    private void addButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseExited
+        // TODO add your handling code here:
+        resetBackground(addButton);
+    }//GEN-LAST:event_addButtonMouseExited
+
+    private void removeButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseEntered
+        // TODO add your handling code here:
+        setBackground(removeButton);
+    }//GEN-LAST:event_removeButtonMouseEntered
+
+    private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
+        // TODO add your handling code here:
+        addPanel.setVisible(true);
+        removePanel.setVisible(false);
+    }//GEN-LAST:event_addButtonMouseClicked
+
+    private void removeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseClicked
+        // TODO add your handling code here:
+        addPanel.setVisible(false);
+        removePanel.setVisible(true);
+    }//GEN-LAST:event_removeButtonMouseClicked
+
+    private void setBackground(JPanel panel){
+        panel.setBackground(new Color(148,204,248));
+    }
+    
+    private void resetBackground(JPanel panel){
+        panel.setBackground(new Color(100,181,246));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -390,6 +538,7 @@ public class JFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel addButton;
     private javax.swing.JPanel addPanel;
     private javax.swing.JRadioButton brampRadioButton;
     private javax.swing.JRadioButton brampRadioButton1;
@@ -404,6 +553,9 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JSeparator jSeparator1;
@@ -416,6 +568,8 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton missRadioButton;
     private javax.swing.JRadioButton missRadioButton1;
     private javax.swing.JPanel parentPanel;
+    private javax.swing.JPanel partTimePanel;
+    private javax.swing.JPanel removeButton;
     private javax.swing.JPanel removePanel;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JRadioButton torontoRadioButton;
