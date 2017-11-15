@@ -214,6 +214,7 @@ public class JFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Last Name:");
 
+        empNumField.setText("000000");
         empNumField.setBorder(null);
         empNumField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +224,7 @@ public class JFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Employee #:");
 
+        deductField.setText("0");
         deductField.setBorder(null);
         deductField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,6 +293,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
+        employmentStatus.add(partTimeRadioButton);
         partTimeRadioButton.setText("Part Time Employee");
         partTimeRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,6 +301,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
+        employmentStatus.add(fullTimeRadioButton);
         fullTimeRadioButton.setText("Full Time Employee");
         fullTimeRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -653,13 +657,13 @@ public class JFrame extends javax.swing.JFrame {
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         // TODO add your handling code here:
+        clear();
         addPanel.setVisible(true);
-        removePanel.setVisible(false);
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void removeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseClicked
         // TODO add your handling code here:
-        addPanel.setVisible(false);
+        clear();
         removePanel.setVisible(true);
     }//GEN-LAST:event_removeButtonMouseClicked
 
@@ -689,11 +693,13 @@ public class JFrame extends javax.swing.JFrame {
         
         
         addPanel.setVisible(false);
-//        if (){
-//            partTimePanel.setVisible(true);
-//        } else {
-//            
-//        }
+        if (fullTimeRadioButton.isSelected()){
+            clear();
+            fullTimePanel.setVisible(true);
+        } else if (partTimeRadioButton.isSelected()) {
+            clear();
+            partTimePanel.setVisible(true);
+        }
     }//GEN-LAST:event_addContinueButtonActionPerformed
 
     private void otherRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherRadioButtonActionPerformed
@@ -731,6 +737,13 @@ public class JFrame extends javax.swing.JFrame {
     
     private void resetBackground(JPanel panel){
         panel.setBackground(new Color(100,181,246));
+    }
+    
+    private void clear(){
+        addPanel.setVisible(false);
+        removePanel.setVisible(false);
+        partTimePanel.setVisible(false);
+        fullTimePanel.setVisible(false);
     }
     
     /**
