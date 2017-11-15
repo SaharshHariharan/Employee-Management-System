@@ -16,19 +16,22 @@ import javax.swing.JPanel;
  * @author Ani
  */
 public class JFrame extends javax.swing.JFrame {
-    String fN,lN;
+
+    String fN, lN, currentPage;
     Gender gender;
     MyHashTable myt;
     int empNum;
     Location location;
-    double deductRate,hourlyWage,hoursPerWeek,weeksPerYear;
-    
+    double deductRate, hourlyWage, hoursPerWeek, weeksPerYear;
+
     ;
     /**
      * Creates new form JFrame
      */
     public JFrame() {
         initComponents();
+        currentPage = "add";
+        setBackground(addButton);
     }
 
     /**
@@ -43,12 +46,16 @@ public class JFrame extends javax.swing.JFrame {
         genderGroup = new javax.swing.ButtonGroup();
         locationGroup = new javax.swing.ButtonGroup();
         employmentStatus = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         sidePanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         addButton = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         removeButton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        viewButton = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         parentPanel = new javax.swing.JPanel();
         addPanel = new javax.swing.JPanel();
         fNField = new javax.swing.JTextField();
@@ -91,6 +98,14 @@ public class JFrame extends javax.swing.JFrame {
         hoursPerWeekField1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
+        viewPanel = new javax.swing.JPanel();
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,6 +183,40 @@ public class JFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        viewButton.setBackground(new java.awt.Color(100, 181, 246));
+        viewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewButtonMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("O  VIEW");
+
+        javax.swing.GroupLayout viewButtonLayout = new javax.swing.GroupLayout(viewButton);
+        viewButton.setLayout(viewButtonLayout);
+        viewButtonLayout.setHorizontalGroup(
+            viewButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewButtonLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        viewButtonLayout.setVerticalGroup(
+            viewButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(
@@ -178,6 +227,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
             .addComponent(removeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(viewButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,6 +238,8 @@ public class JFrame extends javax.swing.JFrame {
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -581,6 +633,21 @@ public class JFrame extends javax.swing.JFrame {
 
         parentPanel.add(fullTimePanel, "card5");
 
+        viewPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
+        viewPanel.setLayout(viewPanelLayout);
+        viewPanelLayout.setHorizontalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 408, Short.MAX_VALUE)
+        );
+        viewPanelLayout.setVerticalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 383, Short.MAX_VALUE)
+        );
+
+        parentPanel.add(viewPanel, "card6");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -627,8 +694,8 @@ public class JFrame extends javax.swing.JFrame {
 
     private void partTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partTimeRadioButtonActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_partTimeRadioButtonActionPerformed
 
     private void fullTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullTimeRadioButtonActionPerformed
@@ -647,7 +714,11 @@ public class JFrame extends javax.swing.JFrame {
 
     private void addButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseExited
         // TODO add your handling code here:
-        resetBackground(addButton);
+        if (currentPage == "add") {
+            setBackground(addButton);
+        } else {
+            resetBackground(addButton);
+        }
     }//GEN-LAST:event_addButtonMouseExited
 
     private void removeButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseEntered
@@ -659,12 +730,14 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         clear();
         addPanel.setVisible(true);
+        currentPage = "add";
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void removeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseClicked
         // TODO add your handling code here:
         clear();
         removePanel.setVisible(true);
+        currentPage = "remove";
     }//GEN-LAST:event_removeButtonMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -689,11 +762,9 @@ public class JFrame extends javax.swing.JFrame {
         lN = lNField.getText();
         empNum = Integer.parseInt(empNumField.getText());
         deductRate = Double.parseDouble(deductField.getText());
-        
-        
-        
+
         addPanel.setVisible(false);
-        if (fullTimeRadioButton.isSelected()){
+        if (fullTimeRadioButton.isSelected()) {
             clear();
             fullTimePanel.setVisible(true);
         } else if (partTimeRadioButton.isSelected()) {
@@ -705,7 +776,7 @@ public class JFrame extends javax.swing.JFrame {
     private void otherRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherRadioButtonActionPerformed
         // TODO add your handling code here:
         gender = Gender.OTHER;
-        
+
     }//GEN-LAST:event_otherRadioButtonActionPerformed
 
     private void femaleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleRadioButtonActionPerformed
@@ -731,21 +802,33 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_hoursPerWeekField1ActionPerformed
 
-    private void setBackground(JPanel panel){
-        panel.setBackground(new Color(148,204,248));
+    private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewButtonMouseClicked
+
+    private void viewButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewButtonMouseExited
+
+    private void viewButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewButtonMouseEntered
+
+    private void setBackground(JPanel panel) {
+        panel.setBackground(new Color(148, 204, 248));
     }
-    
-    private void resetBackground(JPanel panel){
-        panel.setBackground(new Color(100,181,246));
+
+    private void resetBackground(JPanel panel) {
+        panel.setBackground(new Color(100, 181, 246));
     }
-    
-    private void clear(){
+
+    private void clear() {
         addPanel.setVisible(false);
         removePanel.setVisible(false);
         partTimePanel.setVisible(false);
         fullTimePanel.setVisible(false);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -804,6 +887,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -812,6 +896,8 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -832,6 +918,8 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JPanel removePanel;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JRadioButton torontoRadioButton;
+    private javax.swing.JPanel viewButton;
+    private javax.swing.JPanel viewPanel;
     private javax.swing.JTextField weeksPerYearField;
     // End of variables declaration//GEN-END:variables
 }
