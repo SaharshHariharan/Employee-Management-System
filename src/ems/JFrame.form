@@ -433,7 +433,7 @@
             <Component class="javax.swing.JRadioButton" name="maleRadioButton">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="locationGroup"/>
+                  <ComponentRef name="genderGroup"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Male"/>
               </Properties>
@@ -444,7 +444,7 @@
             <Component class="javax.swing.JRadioButton" name="femaleRadioButton">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="locationGroup"/>
+                  <ComponentRef name="genderGroup"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Female"/>
               </Properties>
@@ -455,7 +455,7 @@
             <Component class="javax.swing.JRadioButton" name="otherRadioButton">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="locationGroup"/>
+                  <ComponentRef name="genderGroup"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Other"/>
               </Properties>
