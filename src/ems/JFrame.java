@@ -234,7 +234,7 @@ public class JFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Deduct Rate:");
 
-        locationGroup.add(maleRadioButton);
+        genderGroup.add(maleRadioButton);
         maleRadioButton.setText("Male");
         maleRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,7 +242,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        locationGroup.add(femaleRadioButton);
+        genderGroup.add(femaleRadioButton);
         femaleRadioButton.setText("Female");
         femaleRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +250,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        locationGroup.add(otherRadioButton);
+        genderGroup.add(otherRadioButton);
         otherRadioButton.setText("Other");
         otherRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
