@@ -5,10 +5,14 @@
  */
 package ems;
 
+import hashtables.EmployeeInfo;
+import hashtables.FullTimeEmployee;
 import hashtables.Gender;
 import hashtables.Location;
 import hashtables.MyHashTable;
+import hashtables.PartTimeEmployee;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -16,19 +20,21 @@ import javax.swing.JPanel;
  * @author Ani
  */
 public class JFrame extends javax.swing.JFrame {
-    String fN,lN;
+
+    String fN, lN, currentPage;
     Gender gender;
-    MyHashTable myt;
+    MyHashTable myHT;
     int empNum;
     Location location;
-    double deductRate,hourlyWage,hoursPerWeek,weeksPerYear;
-    
+    double deductRate, hourlyWage, hoursPerWeek, weeksPerYear;
+
     ;
     /**
      * Creates new form JFrame
      */
     public JFrame() {
         initComponents();
+        myHT = new MyHashTable(2);
     }
 
     /**
@@ -43,12 +49,16 @@ public class JFrame extends javax.swing.JFrame {
         genderGroup = new javax.swing.ButtonGroup();
         locationGroup = new javax.swing.ButtonGroup();
         employmentStatus = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         sidePanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         addButton = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         removeButton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        viewButton = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         parentPanel = new javax.swing.JPanel();
         addPanel = new javax.swing.JPanel();
         fNField = new javax.swing.JTextField();
@@ -76,8 +86,8 @@ public class JFrame extends javax.swing.JFrame {
         fullTimeRadioButton = new javax.swing.JRadioButton();
         removePanel = new javax.swing.JPanel();
         partTimePanel = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        fNField1 = new javax.swing.JTextField();
+        addPTEmployeeButton = new javax.swing.JButton();
+        hourlyWageFeild = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         hourlyWageField = new javax.swing.JLabel();
         hoursPerWeekField = new javax.swing.JTextField();
@@ -87,10 +97,20 @@ public class JFrame extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         fullTimePanel = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        hoursPerWeekField1 = new javax.swing.JTextField();
+        addFTEmployeeButton = new javax.swing.JButton();
+        yearlySalaryField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
+        viewPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,6 +188,40 @@ public class JFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        viewButton.setBackground(new java.awt.Color(100, 181, 246));
+        viewButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewButtonMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewButtonMouseEntered(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("O  VIEW");
+
+        javax.swing.GroupLayout viewButtonLayout = new javax.swing.GroupLayout(viewButton);
+        viewButton.setLayout(viewButtonLayout);
+        viewButtonLayout.setHorizontalGroup(
+            viewButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewButtonLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        viewButtonLayout.setVerticalGroup(
+            viewButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
         sidePanel.setLayout(sidePanelLayout);
         sidePanelLayout.setHorizontalGroup(
@@ -178,6 +232,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
             .addComponent(removeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(viewButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         sidePanelLayout.setVerticalGroup(
             sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,6 +243,8 @@ public class JFrame extends javax.swing.JFrame {
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -214,6 +271,7 @@ public class JFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Last Name:");
 
+        empNumField.setText("000000");
         empNumField.setBorder(null);
         empNumField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +281,7 @@ public class JFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Employee #:");
 
+        deductField.setText("0");
         deductField.setBorder(null);
         deductField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,7 +291,7 @@ public class JFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Deduct Rate:");
 
-        locationGroup.add(maleRadioButton);
+        genderGroup.add(maleRadioButton);
         maleRadioButton.setText("Male");
         maleRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,7 +299,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        locationGroup.add(femaleRadioButton);
+        genderGroup.add(femaleRadioButton);
         femaleRadioButton.setText("Female");
         femaleRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,7 +307,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        locationGroup.add(otherRadioButton);
+        genderGroup.add(otherRadioButton);
         otherRadioButton.setText("Other");
         otherRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,6 +350,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
+        employmentStatus.add(partTimeRadioButton);
         partTimeRadioButton.setText("Part Time Employee");
         partTimeRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,6 +358,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
+        employmentStatus.add(fullTimeRadioButton);
         fullTimeRadioButton.setText("Full Time Employee");
         fullTimeRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -429,7 +490,7 @@ public class JFrame extends javax.swing.JFrame {
         removePanel.setLayout(removePanelLayout);
         removePanelLayout.setHorizontalGroup(
             removePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
+            .addGap(0, 414, Short.MAX_VALUE)
         );
         removePanelLayout.setVerticalGroup(
             removePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,17 +501,17 @@ public class JFrame extends javax.swing.JFrame {
 
         partTimePanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("Add Employee");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        addPTEmployeeButton.setText("Add Employee");
+        addPTEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                addPTEmployeeButtonActionPerformed(evt);
             }
         });
 
-        fNField1.setBorder(null);
-        fNField1.addActionListener(new java.awt.event.ActionListener() {
+        hourlyWageFeild.setBorder(null);
+        hourlyWageFeild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fNField1ActionPerformed(evt);
+                hourlyWageFeildActionPerformed(evt);
             }
         });
 
@@ -480,7 +541,7 @@ public class JFrame extends javax.swing.JFrame {
             partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, partTimePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(addPTEmployeeButton)
                 .addGap(18, 18, 18))
             .addGroup(partTimePanelLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
@@ -491,12 +552,12 @@ public class JFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fNField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hourlyWageFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hoursPerWeekField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(weeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         partTimePanelLayout.setVerticalGroup(
             partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,7 +565,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(147, 147, 147)
                 .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fNField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hourlyWageFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(hourlyWageField))
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -520,7 +581,7 @@ public class JFrame extends javax.swing.JFrame {
                         .addComponent(jLabel12))
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(addPTEmployeeButton)
                 .addGap(14, 14, 14))
         );
 
@@ -528,17 +589,17 @@ public class JFrame extends javax.swing.JFrame {
 
         fullTimePanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton3.setText("Add Employee");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        addFTEmployeeButton.setText("Add Employee");
+        addFTEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                addFTEmployeeButtonActionPerformed(evt);
             }
         });
 
-        hoursPerWeekField1.setBorder(null);
-        hoursPerWeekField1.addActionListener(new java.awt.event.ActionListener() {
+        yearlySalaryField.setBorder(null);
+        yearlySalaryField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hoursPerWeekField1ActionPerformed(evt);
+                yearlySalaryFieldActionPerformed(evt);
             }
         });
 
@@ -550,16 +611,16 @@ public class JFrame extends javax.swing.JFrame {
             fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fullTimePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(addFTEmployeeButton)
                 .addGap(18, 18, 18))
             .addGroup(fullTimePanelLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hoursPerWeekField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(yearlySalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         fullTimePanelLayout.setVerticalGroup(
             fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -567,15 +628,49 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(181, 181, 181)
                 .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(hoursPerWeekField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(yearlySalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel13))
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(addFTEmployeeButton)
                 .addGap(14, 14, 14))
         );
 
         parentPanel.add(fullTimePanel, "card5");
+
+        viewPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
+        viewPanel.setLayout(viewPanelLayout);
+        viewPanelLayout.setHorizontalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        viewPanelLayout.setVerticalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+        );
+
+        parentPanel.add(viewPanel, "card6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -623,8 +718,8 @@ public class JFrame extends javax.swing.JFrame {
 
     private void partTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partTimeRadioButtonActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_partTimeRadioButtonActionPerformed
 
     private void fullTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullTimeRadioButtonActionPerformed
@@ -653,23 +748,36 @@ public class JFrame extends javax.swing.JFrame {
 
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         // TODO add your handling code here:
+        clear();
         addPanel.setVisible(true);
-        removePanel.setVisible(false);
+        currentPage = "add";
     }//GEN-LAST:event_addButtonMouseClicked
 
     private void removeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseClicked
         // TODO add your handling code here:
-        addPanel.setVisible(false);
+        clear();
         removePanel.setVisible(true);
+        currentPage = "remove";
     }//GEN-LAST:event_removeButtonMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void addPTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPTEmployeeButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        hourlyWage = Double.parseDouble(hourlyWageFeild.getText());
+        hoursPerWeek = Double.parseDouble(hoursPerWeekField.getText());
+        weeksPerYear = Double.parseDouble(weeksPerYearField.getText());
+        PartTimeEmployee someEmployee = new PartTimeEmployee(empNum, fN, lN, gender, location, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
+        System.out.println(someEmployee.getEmpNumber());
+        myHT.addEmployee(someEmployee);
+        JOptionPane.showMessageDialog(null, "fuck off ani");
+              
+                
+     
+        //myHT.addEmployee(new PartTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location, this.deductRate, Double.parseDouble(hourlyWageField.getText()), Double.parseDouble(hoursPerWeekField.getText()),Double.parseDouble(weeksPerYearField.getText())));
+    }//GEN-LAST:event_addPTEmployeeButtonActionPerformed
 
-    private void fNField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNField1ActionPerformed
+    private void hourlyWageFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourlyWageFeildActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fNField1ActionPerformed
+    }//GEN-LAST:event_hourlyWageFeildActionPerformed
 
     private void hoursPerWeekFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoursPerWeekFieldActionPerformed
         // TODO add your handling code here:
@@ -685,21 +793,21 @@ public class JFrame extends javax.swing.JFrame {
         lN = lNField.getText();
         empNum = Integer.parseInt(empNumField.getText());
         deductRate = Double.parseDouble(deductField.getText());
-        
-        
-        
+
         addPanel.setVisible(false);
-//        if (){
-//            partTimePanel.setVisible(true);
-//        } else {
-//            
-//        }
+        if (fullTimeRadioButton.isSelected()) {
+            clear();
+            fullTimePanel.setVisible(true);
+        } else if (partTimeRadioButton.isSelected()) {
+            clear();
+            partTimePanel.setVisible(true);
+        }
     }//GEN-LAST:event_addContinueButtonActionPerformed
 
     private void otherRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherRadioButtonActionPerformed
         // TODO add your handling code here:
         gender = Gender.OTHER;
-        
+
     }//GEN-LAST:event_otherRadioButtonActionPerformed
 
     private void femaleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleRadioButtonActionPerformed
@@ -717,22 +825,50 @@ public class JFrame extends javax.swing.JFrame {
         location = Location.TORONTO;
     }//GEN-LAST:event_torontoRadioButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void addFTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFTEmployeeButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        myHT.addEmployee(new FullTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location,
+			this.deductRate,Integer.parseInt(yearlySalaryField.getText())));
+    
+    }//GEN-LAST:event_addFTEmployeeButtonActionPerformed
 
-    private void hoursPerWeekField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoursPerWeekField1ActionPerformed
+    private void yearlySalaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlySalaryFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_hoursPerWeekField1ActionPerformed
+    }//GEN-LAST:event_yearlySalaryFieldActionPerformed
 
-    private void setBackground(JPanel panel){
-        panel.setBackground(new Color(148,204,248));
+    private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
+        // TODO add your handling code here:
+        clear();
+        viewPanel.setVisible(true);
+        currentPage = "view";
+    }//GEN-LAST:event_viewButtonMouseClicked
+
+    private void viewButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseExited
+        // TODO add your handling code here:
+        clear();
+        resetBackground(viewButton);
+    }//GEN-LAST:event_viewButtonMouseExited
+
+    private void viewButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseEntered
+        // TODO add your handling code here:
+        setBackground(viewButton);
+    }//GEN-LAST:event_viewButtonMouseEntered
+
+    private void setBackground(JPanel panel) {
+        panel.setBackground(new Color(148, 204, 248));
     }
-    
-    private void resetBackground(JPanel panel){
-        panel.setBackground(new Color(100,181,246));
+
+    private void resetBackground(JPanel panel) {
+        panel.setBackground(new Color(100, 181, 246));
     }
-    
+
+    private void clear() {
+        addPanel.setVisible(false);
+        removePanel.setVisible(false);
+        partTimePanel.setVisible(false);
+        fullTimePanel.setVisible(false);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -771,26 +907,26 @@ public class JFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addButton;
     private javax.swing.JButton addContinueButton;
+    private javax.swing.JButton addFTEmployeeButton;
+    private javax.swing.JButton addPTEmployeeButton;
     private javax.swing.JPanel addPanel;
     private javax.swing.JRadioButton brampRadioButton;
     private javax.swing.JTextField deductField;
     private javax.swing.JTextField empNumField;
     private javax.swing.ButtonGroup employmentStatus;
     private javax.swing.JTextField fNField;
-    private javax.swing.JTextField fNField1;
     private javax.swing.JRadioButton femaleRadioButton;
     private javax.swing.JPanel fullTimePanel;
     private javax.swing.JRadioButton fullTimeRadioButton;
     private javax.swing.ButtonGroup genderGroup;
+    private javax.swing.JTextField hourlyWageFeild;
     private javax.swing.JLabel hourlyWageField;
     private javax.swing.JTextField hoursPerWeekField;
-    private javax.swing.JTextField hoursPerWeekField1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -799,6 +935,9 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -807,6 +946,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField lNField;
     private javax.swing.ButtonGroup locationGroup;
     private javax.swing.JRadioButton maleRadioButton;
@@ -819,6 +959,9 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JPanel removePanel;
     private javax.swing.JPanel sidePanel;
     private javax.swing.JRadioButton torontoRadioButton;
+    private javax.swing.JPanel viewButton;
+    private javax.swing.JPanel viewPanel;
     private javax.swing.JTextField weeksPerYearField;
+    private javax.swing.JTextField yearlySalaryField;
     // End of variables declaration//GEN-END:variables
 }
