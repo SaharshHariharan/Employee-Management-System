@@ -5,12 +5,14 @@
  */
 package ems;
 
+import hashtables.EmployeeInfo;
 import hashtables.FullTimeEmployee;
 import hashtables.Gender;
 import hashtables.Location;
 import hashtables.MyHashTable;
 import hashtables.PartTimeEmployee;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -32,6 +34,7 @@ public class JFrame extends javax.swing.JFrame {
      */
     public JFrame() {
         initComponents();
+        myHT = new MyHashTable(2);
     }
 
     /**
@@ -84,7 +87,7 @@ public class JFrame extends javax.swing.JFrame {
         removePanel = new javax.swing.JPanel();
         partTimePanel = new javax.swing.JPanel();
         addPTEmployeeButton = new javax.swing.JButton();
-        fNField1 = new javax.swing.JTextField();
+        hourlyWageFeild = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         hourlyWageField = new javax.swing.JLabel();
         hoursPerWeekField = new javax.swing.JTextField();
@@ -505,10 +508,10 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        fNField1.setBorder(null);
-        fNField1.addActionListener(new java.awt.event.ActionListener() {
+        hourlyWageFeild.setBorder(null);
+        hourlyWageFeild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fNField1ActionPerformed(evt);
+                hourlyWageFeildActionPerformed(evt);
             }
         });
 
@@ -549,7 +552,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fNField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hourlyWageFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hoursPerWeekField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(weeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -562,7 +565,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(147, 147, 147)
                 .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fNField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hourlyWageFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(hourlyWageField))
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -759,13 +762,22 @@ public class JFrame extends javax.swing.JFrame {
 
     private void addPTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPTEmployeeButtonActionPerformed
         // TODO add your handling code here:
-        myHT.addEmployee(new PartTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location,
-			this.deductRate, Double.parseDouble(hourlyWageField.getText()), Double.parseDouble(hoursPerWeekField.getText()),Double.parseDouble(weeksPerYearField.getText())));
+        hourlyWage = Double.parseDouble(hourlyWageFeild.getText());
+        hoursPerWeek = Double.parseDouble(hoursPerWeekField.getText());
+        weeksPerYear = Double.parseDouble(weeksPerYearField.getText());
+        PartTimeEmployee someEmployee = new PartTimeEmployee(empNum, fN, lN, gender, location, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
+        System.out.println(someEmployee.getEmpNumber());
+        myHT.addEmployee(someEmployee);
+        JOptionPane.showMessageDialog(null, "fuck off ani");
+              
+                
+     
+        //myHT.addEmployee(new PartTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location, this.deductRate, Double.parseDouble(hourlyWageField.getText()), Double.parseDouble(hoursPerWeekField.getText()),Double.parseDouble(weeksPerYearField.getText())));
     }//GEN-LAST:event_addPTEmployeeButtonActionPerformed
 
-    private void fNField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNField1ActionPerformed
+    private void hourlyWageFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourlyWageFeildActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fNField1ActionPerformed
+    }//GEN-LAST:event_hourlyWageFeildActionPerformed
 
     private void hoursPerWeekFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoursPerWeekFieldActionPerformed
         // TODO add your handling code here:
@@ -903,11 +915,11 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField empNumField;
     private javax.swing.ButtonGroup employmentStatus;
     private javax.swing.JTextField fNField;
-    private javax.swing.JTextField fNField1;
     private javax.swing.JRadioButton femaleRadioButton;
     private javax.swing.JPanel fullTimePanel;
     private javax.swing.JRadioButton fullTimeRadioButton;
     private javax.swing.ButtonGroup genderGroup;
+    private javax.swing.JTextField hourlyWageFeild;
     private javax.swing.JLabel hourlyWageField;
     private javax.swing.JTextField hoursPerWeekField;
     private javax.swing.JLabel jLabel1;

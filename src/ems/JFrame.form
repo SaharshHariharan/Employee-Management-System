@@ -667,7 +667,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jSeparator5" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                          <Component id="fNField1" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                          <Component id="hourlyWageFeild" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
                           <Component id="hoursPerWeekField" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
                           <Component id="jSeparator6" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
                           <Component id="weeksPerYearField" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
@@ -683,7 +683,7 @@
                       <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="fNField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="hourlyWageFeild" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="hourlyWageField" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jSeparator5" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -720,14 +720,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPTEmployeeButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="fNField1">
+            <Component class="javax.swing.JTextField" name="hourlyWageFeild">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fNField1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hourlyWageFeildActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator5">
