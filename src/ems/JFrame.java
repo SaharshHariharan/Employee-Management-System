@@ -30,8 +30,6 @@ public class JFrame extends javax.swing.JFrame {
      */
     public JFrame() {
         initComponents();
-        currentPage = "add";
-        setBackground(addButton);
     }
 
     /**
@@ -99,6 +97,8 @@ public class JFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         viewPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -485,7 +485,7 @@ public class JFrame extends javax.swing.JFrame {
         removePanel.setLayout(removePanelLayout);
         removePanelLayout.setHorizontalGroup(
             removePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
+            .addGap(0, 414, Short.MAX_VALUE)
         );
         removePanelLayout.setVerticalGroup(
             removePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -552,7 +552,7 @@ public class JFrame extends javax.swing.JFrame {
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(weeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         partTimePanelLayout.setVerticalGroup(
             partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -615,7 +615,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(hoursPerWeekField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         fullTimePanelLayout.setVerticalGroup(
             fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -635,15 +635,34 @@ public class JFrame extends javax.swing.JFrame {
 
         viewPanel.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
         viewPanelLayout.setHorizontalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
         parentPanel.add(viewPanel, "card6");
@@ -714,11 +733,7 @@ public class JFrame extends javax.swing.JFrame {
 
     private void addButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseExited
         // TODO add your handling code here:
-        if (currentPage == "add") {
-            setBackground(addButton);
-        } else {
-            resetBackground(addButton);
-        }
+        resetBackground(addButton);
     }//GEN-LAST:event_addButtonMouseExited
 
     private void removeButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseEntered
@@ -804,14 +819,20 @@ public class JFrame extends javax.swing.JFrame {
 
     private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
         // TODO add your handling code here:
+        clear();
+        viewPanel.setVisible(true);
+        currentPage = "view";
     }//GEN-LAST:event_viewButtonMouseClicked
 
     private void viewButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseExited
         // TODO add your handling code here:
+        clear();
+        resetBackground(viewButton);
     }//GEN-LAST:event_viewButtonMouseExited
 
     private void viewButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseEntered
         // TODO add your handling code here:
+        setBackground(viewButton);
     }//GEN-LAST:event_viewButtonMouseEntered
 
     private void setBackground(JPanel panel) {
@@ -898,6 +919,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -906,6 +928,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField lNField;
     private javax.swing.ButtonGroup locationGroup;
     private javax.swing.JRadioButton maleRadioButton;
