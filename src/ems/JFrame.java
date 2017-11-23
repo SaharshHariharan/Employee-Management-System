@@ -113,6 +113,11 @@ public class JFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         sidePanel.setBackground(new java.awt.Color(100, 181, 246));
 
@@ -853,6 +858,19 @@ public class JFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         setBackground(viewButton);
     }//GEN-LAST:event_viewButtonMouseEntered
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+//        for (int i = 0; i < buckets.length; i++) {
+//			// For the current bucket, print out the empNum for each item in its ArrayList.
+//			int listSize = buckets[i].size();
+//			if (listSize != 0) {
+//				for (int j = 0; j < listSize; j++) {
+//					EmployeeInfo theEmployee = buckets[i].get(j);
+//					displayEmployee(theEmployee.getEmpNum());
+//				}
+//			}
+//		}
+    }//GEN-LAST:event_formWindowClosing
 
     private void setBackground(JPanel panel) {
         panel.setBackground(new Color(148, 204, 248));
