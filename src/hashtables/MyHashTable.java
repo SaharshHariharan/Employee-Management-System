@@ -1,9 +1,11 @@
 package hashtables;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
- * MyHashTable is a class that will create a hashtable
+ * MyHashTable is a class that will create a HashTable
  * 
  * @author Ani
  *
@@ -79,4 +81,33 @@ public class MyHashTable {
 		}
 
 	}
+        
+        public void writeToFile() {
+            try {
+                for (int i = 0; i < buckets.length; i++) {
+                    //hello
+                    int listSize = buckets[i].size();
+                    if (listSize == 0) {
+			System.out.println("  Nothing in its ArrayList!");
+                    } else {
+			for (int j = 0; j < listSize; j++) {
+                            PrintWriter writer = new PrintWriter ("data.txt");
+                            writer.println("Employee: " + buckets[i].get(j).getFirstName()  + buckets[i].get(j).getLastName());// + "\n");
+                            writer.println("Employee Number: " + buckets[i].get(j).getEmpNumber());
+                            writer.println("Gender: " + buckets[i].get(j).getGender());
+                            writer.println("Location: " + buckets[i].get(j).getLocation());
+                            if (buckets[i].get(j) instanceof PartTimeEmployee){
+                               // writer.println("Type: Part Time Employee")
+                            }
+                            writer.close();
+
+                            
+                        }
+                    }
+		}
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "File Not Found");
+            }
+        }
 }
+
