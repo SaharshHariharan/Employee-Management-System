@@ -104,7 +104,8 @@ public class MyHashTable {
                                writer.println("Weeks Worked Per Year: " + ( (PartTimeEmployee) someEmployee).getWeeksPerYear());
                             } else if (someEmployee instanceof FullTimeEmployee) {
                                 writer.println("Type: Full Time Employee");
-                                writer.println("Yearly Salary: " + ( (FullTimeEmployee) someEmployee).getYearlySalary());                            }
+                                writer.println("Yearly Salary: " + ( (FullTimeEmployee) someEmployee).getYearlySalary());                       
+                            } writer.write(System.getProperty("line.separator"));
                             writer.close();
                         }                     
                     }
