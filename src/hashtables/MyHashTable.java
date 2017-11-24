@@ -85,28 +85,32 @@ public class MyHashTable {
         public void writeToFile() {
             try {
                 for (int i = 0; i < buckets.length; i++) {
-                    //hello
                     int listSize = buckets[i].size();
+                    PrintWriter writer = new PrintWriter ("data.txt");
                     if (listSize == 0) {
 			System.out.println("  Nothing in its ArrayList!");
-                    } else {
+                    } else if (listSize != 0) {
 			for (int j = 0; j < listSize; j++) {
-                            PrintWriter writer = new PrintWriter ("data.txt");
-                            writer.println("Employee: " + buckets[i].get(j).getFirstName()  + buckets[i].get(j).getLastName());// + "\n");
-                            writer.println("Employee Number: " + buckets[i].get(j).getEmpNumber());
-                            writer.println("Gender: " + buckets[i].get(j).getGender());
-                            writer.println("Location: " + buckets[i].get(j).getLocation());
-                            if (buckets[i].get(j) instanceof PartTimeEmployee){
-                               // writer.println("Type: Part Time Employee")
-                            }
+                            EmployeeInfo someEmployee = buckets[i].get(j);
+                            writer.println("Employee: " + someEmployee.getFirstName()  + someEmployee.getLastName());// + "\n");
+                            writer.println("Employee Number: " + someEmployee.getEmpNumber());
+                            writer.println("Deduct Rate: " + someEmployee.getDeductRate());
+                            writer.println("Gender: " + someEmployee.getGender());
+                            writer.println("Location: " + someEmployee.getLocation());
+                            if (someEmployee instanceof PartTimeEmployee){
+                               writer.println("Type: Part Time Employee");
+                               writer.println("Hourly Wage: " + ( (PartTimeEmployee) someEmployee).getHourlyWage());
+                               writer.println("Hours Worked Per Week: " + ( (PartTimeEmployee) someEmployee).getHoursPerWeek());
+                               writer.println("Weeks Worked Per Year: " + ( (PartTimeEmployee) someEmployee).getWeeksPerYear());
+                            } else if (someEmployee instanceof FullTimeEmployee) {
+                                writer.println("Type: Full Time Employee");
+                                writer.println("Yearly Salary: " + ( (FullTimeEmployee) someEmployee).getYearlySalary());                            }
                             writer.close();
-
-                            
-                        }
+                        }                     
                     }
 		}
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "File Not Found");
+                JOptionPane.showMessageDialog(null, "File Not Found"); //makesure
             }
         }
 }
