@@ -85,6 +85,7 @@ public class MyHashTable {
         public void writeToFile() {
             try {
                 PrintWriter writer = new PrintWriter ("data.txt");
+                writer.write(System.getProperty("line.separator")); 
                 for (int i = 0; i < buckets.length; i++) {
                     int listSize = buckets[i].size();
                     if (listSize == 0) {
