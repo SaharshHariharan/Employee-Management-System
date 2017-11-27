@@ -84,9 +84,9 @@ public class MyHashTable {
         
         public void writeToFile() {
             try {
+                PrintWriter writer = new PrintWriter ("data.txt");
                 for (int i = 0; i < buckets.length; i++) {
                     int listSize = buckets[i].size();
-                    PrintWriter writer = new PrintWriter ("data.txt");
                     if (listSize == 0) {
 			System.out.println("  Nothing in its ArrayList!");
                     } else if (listSize != 0) {
@@ -105,11 +105,12 @@ public class MyHashTable {
                             } else if (someEmployee instanceof FullTimeEmployee) {
                                 writer.println("Type: Full Time Employee");
                                 writer.println("Yearly Salary: " + ( (FullTimeEmployee) someEmployee).getYearlySalary());                       
-                            } writer.write(System.getProperty("line.separator"));
-                            writer.close();
-                        }                     
-                    }
+                            } 
+                            writer.write(System.getProperty("line.separator")); 
+                        }
+                    } 
 		}
+            writer.close();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "File Not Found"); //makesure
             }
