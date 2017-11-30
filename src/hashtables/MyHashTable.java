@@ -1,5 +1,7 @@
 package hashtables;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -82,10 +84,50 @@ public class MyHashTable {
 
 	}
         
+        public void readFromFile() {
+            try {
+                FileReader file = new FileReader ("C:/Saharsh/Grade 12/Compsci/EmployeeManagementSystem/EMS");
+                BufferedReader reader = new BufferedReader(file);
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    line = reader.readLine();  //reads employee number
+                    int empnum = Integer.parseInt(line);
+                    line = reader.readLine();  //reads first name
+                    String firstname = line;
+                    line = reader.readLine();  //reads lastname
+                    String lastname = line;
+                    line = reader.readLine();  //reads deduct rate
+                    double deductrate = Double.parseDouble(line);
+                    line = reader.readLine(); // reads gender
+                    Gender gender = Gender.valueOf(line); //converts the string value gender into the Gender enum
+                    line = reader.readLine();  //reads location
+                    Location location = Location.valueOf(line);  //converts the string value location into the Location enum
+                    if ((line = reader.readLine()) == "Type: Part Time Employee"){   
+                        line = reader.readLine();  //reads hourly wage
+                        double hourlywage = Double.parseDouble(line);
+                        line = reader.readLine();  //reads hours per week
+                        double hoursperweek = Double.parseDouble(line);
+                        line = reader.readLine();
+                        double weeksperyear = Double.parseDouble(line); //reads weeks per year
+                        EmployeeInfo theEmployee = new PartTimeEmployee (empnum, firstname, lastname, gender, location,
+			deductrate, hourlywage, hoursperweek, weeksperyear);
+                        addEmployee(theEmployee);
+                    } else if ((line = reader.readLine()) == "Type: Full Time Employee") {
+                        line = reader.readLine();
+                        double yearlySalary = Double.parseDouble(line);
+                        EmployeeInfo theEmployee = new FullTimeEmployee (empnum, firstname, lastname, gender, location, deductrate, yearlySalary);
+                        addEmployee(theEmployee);
+                    }
+                }
+            } catch (Exception e) {
+                
+            }
+        }
+        
         public void writeToFile() {
             try {
                 PrintWriter writer = new PrintWriter ("data.txt");
-                writer.write(System.getProperty("line.separator")); 
+                //writer.write(System.getProperty("line.separator")); 
                 for (int i = 0; i < buckets.length; i++) {
                     int listSize = buckets[i].size();
                     if (listSize == 0) {
@@ -93,8 +135,9 @@ public class MyHashTable {
                     } else if (listSize != 0) {
 			for (int j = 0; j < listSize; j++) {
                             EmployeeInfo someEmployee = buckets[i].get(j);
-                            writer.println("Employee: " + someEmployee.getFirstName()  + someEmployee.getLastName());// + "\n");
                             writer.println("Employee Number: " + someEmployee.getEmpNumber());
+                            writer.println("First Name: " + someEmployee.getFirstName());
+                            writer.println("Last  Name:" + someEmployee.getLastName());
                             writer.println("Deduct Rate: " + someEmployee.getDeductRate());
                             writer.println("Gender: " + someEmployee.getGender());
                             writer.println("Location: " + someEmployee.getLocation());
@@ -104,10 +147,10 @@ public class MyHashTable {
                                writer.println("Hours Worked Per Week: " + ( (PartTimeEmployee) someEmployee).getHoursPerWeek());
                                writer.println("Weeks Worked Per Year: " + ( (PartTimeEmployee) someEmployee).getWeeksPerYear());
                             } else if (someEmployee instanceof FullTimeEmployee) {
-                                writer.println("Type: Full Time Employee");
-                                writer.println("Yearly Salary: " + ( (FullTimeEmployee) someEmployee).getYearlySalary());                       
+                               writer.println("Type: Full Time Employee");
+                               writer.println("Yearly Salary: " + ( (FullTimeEmployee) someEmployee).getYearlySalary());                       
                             } 
-                            writer.write(System.getProperty("line.separator")); 
+                            //riter.write(System.getProperty("line.separator")); 
                         }
                     } 
 		}
