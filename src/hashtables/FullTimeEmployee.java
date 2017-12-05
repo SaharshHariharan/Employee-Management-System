@@ -14,11 +14,11 @@ public class FullTimeEmployee extends EmployeeInfo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public double calcAnnualGrossIncome(){
+	public double AnnualGrossIncome(){
 		return this.yearlySalary;
 	}
 	
-	public double AnnualNetIncome(){
-		return calcAnnualGrossIncome()*(1-deductRate);
+	public double calcAnnualNetIncome(){
+		return AnnualGrossIncome()*(1-deductRate);
 	}
 }
