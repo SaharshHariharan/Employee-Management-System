@@ -1556,6 +1556,7 @@ public class JFrame extends javax.swing.JFrame {
     
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
+        myHT.removeEmployee(myHT.search(Integer.parseInt(employeeSearchField.getText())));
         if (partTimeInfoRadioButton.isSelected()){
             hourlyWage = Double.parseDouble(hourlyWageFeild.getText());
             hoursPerWeek = Double.parseDouble(hoursPerWeekField.getText());
@@ -1567,8 +1568,24 @@ public class JFrame extends javax.swing.JFrame {
             myHT.addEmployee(new FullTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location,
                     this.deductRate,Integer.parseInt(yearlySalaryInfoField.getText())));
         }
-        
+        fNInfoField.setEditable(false);
+            lNInfoField.setEditable(false);
+            deductInfoField.setEditable(false);
+            hourlyWageInfoField.setEditable(false);
+            hoursPerWeekInfoField.setEditable(false);
+            weeksPerYearInfoField.setEditable(false);
+            yearlySalaryInfoField.setEditable(false);
+            maleInfoRadioButton.setEnabled(false);
+            maleInfoRadioButton.setEnabled(false);
+            femaleInfoRadioButton.setEnabled(false);
+            otherInfoRadioButton.setEnabled(false);
+            missInfoRadioButton.setEnabled(false);
+            brampInfoRadioButton.setEnabled(false);
+            torontoInfoRadioButton.setEnabled(false);
+            partTimeInfoRadioButton.setEnabled(false);
+            fullTimeInfoRadioButton.setEnabled(false);
         JOptionPane.showMessageDialog(null, "Employee Edited!");
+        
         duringEdit.setVisible(false);
         preEdit.setVisible(true);
     }//GEN-LAST:event_saveButtonActionPerformed
