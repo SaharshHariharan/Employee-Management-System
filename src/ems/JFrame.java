@@ -873,6 +873,7 @@ public class JFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.setCellSelectionEnabled(true);
         jScrollPane3.setViewportView(jTable2);
 
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
@@ -1327,6 +1328,7 @@ public class JFrame extends javax.swing.JFrame {
         int toFind = Integer.parseInt(employeeSearchField.getText());
         EmployeeInfo found = null;
         found = myHT.search(toFind);
+        
         if (found == null){
             JOptionPane.showMessageDialog(null, "No Employee Found");
         } else {
@@ -1383,26 +1385,32 @@ public class JFrame extends javax.swing.JFrame {
     
     private void maleInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleInfoRadioButtonActionPerformed
         // TODO add your handling code here:
+        gender = Gender.MALE;
     }//GEN-LAST:event_maleInfoRadioButtonActionPerformed
     
     private void femaleInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleInfoRadioButtonActionPerformed
         // TODO add your handling code here:
+        gender = Gender.FEMALE;
     }//GEN-LAST:event_femaleInfoRadioButtonActionPerformed
     
     private void otherInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherInfoRadioButtonActionPerformed
         // TODO add your handling code here:
+        gender = Gender.OTHER;
     }//GEN-LAST:event_otherInfoRadioButtonActionPerformed
     
     private void missInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missInfoRadioButtonActionPerformed
         // TODO add your handling code here:
+        location = Location.MISSISSAUGA;
     }//GEN-LAST:event_missInfoRadioButtonActionPerformed
     
     private void brampInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brampInfoRadioButtonActionPerformed
         // TODO add your handling code here:
+        location = Location.BRAMPTON;
     }//GEN-LAST:event_brampInfoRadioButtonActionPerformed
     
     private void torontoInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torontoInfoRadioButtonActionPerformed
         // TODO add your handling code here:
+        location = Location.TORONTO;
     }//GEN-LAST:event_torontoInfoRadioButtonActionPerformed
     
     private void partTimeInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partTimeInfoRadioButtonActionPerformed
@@ -1478,10 +1486,7 @@ public class JFrame extends javax.swing.JFrame {
         int toFind = Integer.parseInt(employeeSearchField.getText());
         EmployeeInfo found = null;
         found = myHT.search(toFind);
-        if (found == null){
-            JOptionPane.showMessageDialog(null, "No Employee Found");
-            infoPanel.setVisible(false);
-        } else {
+        
             fNInfoField.setText(found.getFirstName());
             lNInfoField.setText(found.getLastName());
             deductInfoField.setText(Integer.toString((int) found.getDeductRate()));
@@ -1537,7 +1542,7 @@ public class JFrame extends javax.swing.JFrame {
             
             preEdit.setVisible(true);
             duringEdit.setVisible(false);
-        }
+        
     }//GEN-LAST:event_cancelButtonActionPerformed
     
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
@@ -1556,10 +1561,15 @@ public class JFrame extends javax.swing.JFrame {
     
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
+        myHT.removeEmployee(myHT.search(Integer.parseInt(employeeSearchField.getText())));
+        fN = fNInfoField.getText();
+        lN = lNInfoField.getText();
+        empNum = Integer.parseInt(employeeSearchField.getText());
+        deductRate = Double.parseDouble(deductInfoField.getText());
         if (partTimeInfoRadioButton.isSelected()){
-            hourlyWage = Double.parseDouble(hourlyWageFeild.getText());
-            hoursPerWeek = Double.parseDouble(hoursPerWeekField.getText());
-            weeksPerYear = Double.parseDouble(weeksPerYearField.getText());
+            hourlyWage = Double.parseDouble(hourlyWageInfoField.getText());
+            hoursPerWeek = Double.parseDouble(hoursPerWeekInfoField.getText());
+            weeksPerYear = Double.parseDouble(weeksPerYearInfoField.getText());
             PartTimeEmployee someEmployee = new PartTimeEmployee(empNum, fN, lN, gender, location, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
             System.out.println(someEmployee.getEmpNumber());
             myHT.addEmployee(someEmployee);
@@ -1567,8 +1577,25 @@ public class JFrame extends javax.swing.JFrame {
             myHT.addEmployee(new FullTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location,
                     this.deductRate,Integer.parseInt(yearlySalaryInfoField.getText())));
         }
-        
         JOptionPane.showMessageDialog(null, "Employee Edited!");
+        
+        fNInfoField.setEditable(false);
+        lNInfoField.setEditable(false);
+        deductInfoField.setEditable(false);
+        hourlyWageInfoField.setEditable(false);
+        hoursPerWeekInfoField.setEditable(false);
+        weeksPerYearInfoField.setEditable(false);
+        yearlySalaryInfoField.setEditable(false);
+        maleInfoRadioButton.setEnabled(false);
+        maleInfoRadioButton.setEnabled(false);
+        femaleInfoRadioButton.setEnabled(false);
+        otherInfoRadioButton.setEnabled(false);
+        missInfoRadioButton.setEnabled(false);
+        brampInfoRadioButton.setEnabled(false);
+        torontoInfoRadioButton.setEnabled(false);
+        partTimeInfoRadioButton.setEnabled(false);
+        fullTimeInfoRadioButton.setEnabled(false);
+        
         duringEdit.setVisible(false);
         preEdit.setVisible(true);
     }//GEN-LAST:event_saveButtonActionPerformed
