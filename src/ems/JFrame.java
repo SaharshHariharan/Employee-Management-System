@@ -27,16 +27,21 @@ public class JFrame extends javax.swing.JFrame {
     int empNum;
     Location location;
     double deductRate, hourlyWage, hoursPerWeek, weeksPerYear;
+
+    int yearlySalary;//
     
-    ;
+
     /**
      * Creates new form JFrame
      */
     public JFrame() {
         initComponents();
         myHT = new MyHashTable(2);
+ 
+        myHT.readFromFile();
         clear();
         addPanel.setVisible(true);
+
     }
     
     /**
@@ -148,6 +153,25 @@ public class JFrame extends javax.swing.JFrame {
         addContinueButton = new javax.swing.JButton();
         partTimeRadioButton = new javax.swing.JRadioButton();
         fullTimeRadioButton = new javax.swing.JRadioButton();
+
+        removePanel = new javax.swing.JPanel();
+        partTimePanel = new javax.swing.JPanel();
+        addPTEmployeeButton = new javax.swing.JButton();
+        hourlyWageFeild = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        hourlyWageField = new javax.swing.JLabel();
+        hoursPerWeekField = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        weeksPerYearField = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        fullTimePanel = new javax.swing.JPanel();
+        addFTEmployeeButton = new javax.swing.JButton();
+        yearlySalaryField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        viewPanel = new javax.swing.JPanel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -862,6 +886,7 @@ public class JFrame extends javax.swing.JFrame {
 
         viewPanel.setBackground(new java.awt.Color(255, 255, 255));
 
+
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -875,6 +900,7 @@ public class JFrame extends javax.swing.JFrame {
         ));
         jTable2.setCellSelectionEnabled(true);
         jScrollPane3.setViewportView(jTable2);
+
 
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
@@ -1280,13 +1306,13 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_torontoRadioButtonActionPerformed
     
     private void addFTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFTEmployeeButtonActionPerformed
-        // TODO add your handling code here:
-        myHT.addEmployee(new FullTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location,
-                this.deductRate,Integer.parseInt(yearlySalaryField.getText())));
-        JOptionPane.showMessageDialog(null, "Employee Added!");
+
+        yearlySalary = Integer.parseInt(yearlySalaryField.getText());
+        FullTimeEmployee someEmployee = new FullTimeEmployee(empNum, fN, lN, gender, location, deductRate, yearlySalary);
+        myHT.addEmployee(someEmployee);
+        JOptionPane.showMessageDialog(null, "Employee Successfully Added");
         clear();
         viewPanel.setVisible(true);
-        
     }//GEN-LAST:event_addFTEmployeeButtonActionPerformed
     
     private void yearlySalaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlySalaryFieldActionPerformed
@@ -1311,16 +1337,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_viewButtonMouseEntered
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-//        for (int i = 0; i < buckets.length; i++) {
-//			// For the current bucket, print out the empNum for each item in its ArrayList.
-//			int listSize = buckets[i].size();
-//			if (listSize != 0) {
-//				for (int j = 0; j < listSize; j++) {
-//					EmployeeInfo theEmployee = buckets[i].get(j);
-//					displayEmployee(theEmployee.getEmpNum());
-//				}
-//			}
-//		}
+        myHT.writeToFile();
     }//GEN-LAST:event_formWindowClosing
     
     private void employeeSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeSearchFieldActionPerformed
