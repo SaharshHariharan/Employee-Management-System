@@ -47,17 +47,19 @@ public class MyHashTable {
 
 	}
 
-	public int search(int toFind) {
+	public EmployeeInfo search(int toFind) {
 		int buck = toFind % k;
+                EmployeeInfo found = null;
 		int position = -1;
-		for (int i = 0; i < buckets[buck].size() - 1; i++) {
+		for (int i = 0; i < buckets[buck].size(); i++) {
 
 			if (buckets[buck].get(i).getEmpNumber() == toFind) {
 				position = i;
+                                found = buckets[buck].get(i);
 			}
 		}
 		System.out.println("Employee Number "+toFind+ " can be found in bucket "+ buck+ ", position "+ position);
-		return position;
+		return found;
 	}
 
 	public void displayContents() {

@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package ems;
 
 import hashtables.EmployeeInfo;
@@ -20,24 +20,30 @@ import javax.swing.JPanel;
  * @author Ani
  */
 public class JFrame extends javax.swing.JFrame {
-
+    
     String fN, lN, currentPage;
     Gender gender;
-    MyHashTable myHT;
+    private MyHashTable myHT;
     int empNum;
     Location location;
     double deductRate, hourlyWage, hoursPerWeek, weeksPerYear;
+
     int yearlySalary;//
     
+
     /**
      * Creates new form JFrame
      */
     public JFrame() {
         initComponents();
         myHT = new MyHashTable(2);
+ 
         myHT.readFromFile();
-    }
+        clear();
+        addPanel.setVisible(true);
 
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,11 +62,73 @@ public class JFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         addButton = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        removeButton = new javax.swing.JPanel();
+        searchButton = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         viewButton = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         parentPanel = new javax.swing.JPanel();
+        searchPanel = new javax.swing.JPanel();
+        infoPanel = new javax.swing.JPanel();
+        fNInfoField = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jSeparator10 = new javax.swing.JSeparator();
+        lNInfoField = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        deductInfoField = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jSeparator13 = new javax.swing.JSeparator();
+        maleInfoRadioButton = new javax.swing.JRadioButton();
+        femaleInfoRadioButton = new javax.swing.JRadioButton();
+        otherInfoRadioButton = new javax.swing.JRadioButton();
+        jLabel19 = new javax.swing.JLabel();
+        missInfoRadioButton = new javax.swing.JRadioButton();
+        brampInfoRadioButton = new javax.swing.JRadioButton();
+        torontoInfoRadioButton = new javax.swing.JRadioButton();
+        jLabel20 = new javax.swing.JLabel();
+        partTimeInfoRadioButton = new javax.swing.JRadioButton();
+        fullTimeInfoRadioButton = new javax.swing.JRadioButton();
+        hourlyWageInfoField = new javax.swing.JTextField();
+        jSeparator12 = new javax.swing.JSeparator();
+        hourlyWageField1 = new javax.swing.JLabel();
+        hoursPerWeekInfoField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jSeparator14 = new javax.swing.JSeparator();
+        weeksPerYearInfoField = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jSeparator15 = new javax.swing.JSeparator();
+        yearlySalaryInfoField = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jSeparator16 = new javax.swing.JSeparator();
+        searchChoiceParent = new javax.swing.JPanel();
+        preEdit = new javax.swing.JPanel();
+        editButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
+        duringEdit = new javax.swing.JPanel();
+        cancelButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        employeeSearchField = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        partTimePanel = new javax.swing.JPanel();
+        addPTEmployeeButton = new javax.swing.JButton();
+        hourlyWageFeild = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        hourlyWageField = new javax.swing.JLabel();
+        hoursPerWeekField = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        weeksPerYearField = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        fullTimePanel = new javax.swing.JPanel();
+        addFTEmployeeButton = new javax.swing.JButton();
+        yearlySalaryField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        viewPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         addPanel = new javax.swing.JPanel();
         fNField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -85,6 +153,7 @@ public class JFrame extends javax.swing.JFrame {
         addContinueButton = new javax.swing.JButton();
         partTimeRadioButton = new javax.swing.JRadioButton();
         fullTimeRadioButton = new javax.swing.JRadioButton();
+
         removePanel = new javax.swing.JPanel();
         partTimePanel = new javax.swing.JPanel();
         addPTEmployeeButton = new javax.swing.JButton();
@@ -158,35 +227,35 @@ public class JFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        removeButton.setBackground(new java.awt.Color(100, 181, 246));
-        removeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        searchButton.setBackground(new java.awt.Color(100, 181, 246));
+        searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                removeButtonMouseClicked(evt);
+                searchButtonMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                removeButtonMouseExited(evt);
+                searchButtonMouseExited(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                removeButtonMouseEntered(evt);
+                searchButtonMouseEntered(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("-  REMOVE");
+        jLabel9.setText("SEARCH");
 
-        javax.swing.GroupLayout removeButtonLayout = new javax.swing.GroupLayout(removeButton);
-        removeButton.setLayout(removeButtonLayout);
-        removeButtonLayout.setHorizontalGroup(
-            removeButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, removeButtonLayout.createSequentialGroup()
+        javax.swing.GroupLayout searchButtonLayout = new javax.swing.GroupLayout(searchButton);
+        searchButton.setLayout(searchButtonLayout);
+        searchButtonLayout.setHorizontalGroup(
+            searchButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchButtonLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addGap(15, 15, 15))
         );
-        removeButtonLayout.setVerticalGroup(
-            removeButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(removeButtonLayout.createSequentialGroup()
+        searchButtonLayout.setVerticalGroup(
+            searchButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchButtonLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addContainerGap())
@@ -216,7 +285,7 @@ public class JFrame extends javax.swing.JFrame {
             .addGroup(viewButtonLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         viewButtonLayout.setVerticalGroup(
             viewButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +303,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(13, Short.MAX_VALUE))
-            .addComponent(removeButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(searchButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(viewButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -246,7 +315,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -254,6 +323,603 @@ public class JFrame extends javax.swing.JFrame {
 
         parentPanel.setBackground(new java.awt.Color(255, 255, 255));
         parentPanel.setLayout(new java.awt.CardLayout());
+
+        searchPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        infoPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        fNInfoField.setEditable(false);
+        fNInfoField.setBorder(null);
+        fNInfoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fNInfoFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("First Name:");
+
+        lNInfoField.setEditable(false);
+        lNInfoField.setBorder(null);
+        lNInfoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lNInfoFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Last Name:");
+
+        deductInfoField.setEditable(false);
+        deductInfoField.setText("0");
+        deductInfoField.setBorder(null);
+        deductInfoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deductInfoFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setText("Deduct Rate:");
+
+        genderGroup.add(maleInfoRadioButton);
+        maleInfoRadioButton.setText("Male");
+        maleInfoRadioButton.setEnabled(false);
+        maleInfoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleInfoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        genderGroup.add(femaleInfoRadioButton);
+        femaleInfoRadioButton.setText("Female");
+        femaleInfoRadioButton.setEnabled(false);
+        femaleInfoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                femaleInfoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        genderGroup.add(otherInfoRadioButton);
+        otherInfoRadioButton.setText("Other");
+        otherInfoRadioButton.setEnabled(false);
+        otherInfoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                otherInfoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText("Gender:");
+
+        locationGroup.add(missInfoRadioButton);
+        missInfoRadioButton.setText("Mississauga");
+        missInfoRadioButton.setEnabled(false);
+        missInfoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                missInfoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        locationGroup.add(brampInfoRadioButton);
+        brampInfoRadioButton.setText("Brampton");
+        brampInfoRadioButton.setEnabled(false);
+        brampInfoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brampInfoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        locationGroup.add(torontoInfoRadioButton);
+        torontoInfoRadioButton.setText("Toronto");
+        torontoInfoRadioButton.setEnabled(false);
+        torontoInfoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                torontoInfoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Location:");
+
+        employmentStatus.add(partTimeInfoRadioButton);
+        partTimeInfoRadioButton.setText("Part Time Employee");
+        partTimeInfoRadioButton.setEnabled(false);
+        partTimeInfoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                partTimeInfoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        employmentStatus.add(fullTimeInfoRadioButton);
+        fullTimeInfoRadioButton.setText("Full Time Employee");
+        fullTimeInfoRadioButton.setEnabled(false);
+        fullTimeInfoRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fullTimeInfoRadioButtonActionPerformed(evt);
+            }
+        });
+
+        hourlyWageInfoField.setEditable(false);
+        hourlyWageInfoField.setBorder(null);
+        hourlyWageInfoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hourlyWageInfoFieldActionPerformed(evt);
+            }
+        });
+
+        hourlyWageField1.setText("Hourly Wage");
+
+        hoursPerWeekInfoField.setEditable(false);
+        hoursPerWeekInfoField.setBorder(null);
+        hoursPerWeekInfoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hoursPerWeekInfoFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Hours per Week");
+
+        weeksPerYearInfoField.setEditable(false);
+        weeksPerYearInfoField.setBorder(null);
+        weeksPerYearInfoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weeksPerYearInfoFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("Weeks per Year");
+
+        yearlySalaryInfoField.setEditable(false);
+        yearlySalaryInfoField.setBorder(null);
+        yearlySalaryInfoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearlySalaryInfoFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setText("Yearly Salary");
+
+        searchChoiceParent.setLayout(new java.awt.CardLayout());
+
+        preEdit.setBackground(new java.awt.Color(255, 255, 255));
+
+        editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+
+        removeButton.setText("Remove");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout preEditLayout = new javax.swing.GroupLayout(preEdit);
+        preEdit.setLayout(preEditLayout);
+        preEditLayout.setHorizontalGroup(
+            preEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(preEditLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(removeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+        preEditLayout.setVerticalGroup(
+            preEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, preEditLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(preEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(editButton)
+                    .addComponent(removeButton))
+                .addGap(17, 17, 17))
+        );
+
+        searchChoiceParent.add(preEdit, "card4");
+
+        duringEdit.setBackground(new java.awt.Color(255, 255, 255));
+
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
+
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout duringEditLayout = new javax.swing.GroupLayout(duringEdit);
+        duringEdit.setLayout(duringEditLayout);
+        duringEditLayout.setHorizontalGroup(
+            duringEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(duringEditLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        duringEditLayout.setVerticalGroup(
+            duringEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, duringEditLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(duringEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveButton)
+                    .addComponent(cancelButton))
+                .addGap(17, 17, 17))
+        );
+
+        searchChoiceParent.add(duringEdit, "card3");
+
+        javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
+        infoPanel.setLayout(infoPanelLayout);
+        infoPanelLayout.setHorizontalGroup(
+            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deductInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(femaleInfoRadioButton)
+                            .addComponent(maleInfoRadioButton)
+                            .addComponent(otherInfoRadioButton)
+                            .addComponent(partTimeInfoRadioButton)
+                            .addComponent(fullTimeInfoRadioButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)))
+                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(missInfoRadioButton)
+                            .addComponent(brampInfoRadioButton)
+                            .addComponent(torontoInfoRadioButton)))
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(yearlySalaryInfoField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                            .addComponent(jSeparator16, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hourlyWageField1)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel21))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hourlyWageInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hoursPerWeekInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(weeksPerYearInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(9, 9, 9))
+            .addGroup(infoPanelLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addComponent(searchChoiceParent, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(infoPanelLayout.createSequentialGroup()
+                    .addGap(23, 23, 23)
+                    .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(infoPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel16)
+                            .addGap(12, 12, 12)
+                            .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lNInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(infoPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel15)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fNInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(262, Short.MAX_VALUE)))
+        );
+        infoPanelLayout.setVerticalGroup(
+            infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
+                .addContainerGap(73, Short.MAX_VALUE)
+                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(missInfoRadioButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(brampInfoRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(deductInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel18))
+                            .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)))
+                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addComponent(torontoInfoRadioButton)
+                        .addGap(18, 18, 18)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(hourlyWageInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(hourlyWageField1))
+                            .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(hoursPerWeekInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel17))
+                            .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(weeksPerYearInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel21))
+                            .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(yearlySalaryInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel22))
+                            .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(infoPanelLayout.createSequentialGroup()
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(maleInfoRadioButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(femaleInfoRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(otherInfoRadioButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(partTimeInfoRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fullTimeInfoRadioButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchChoiceParent, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(infoPanelLayout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fNInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15))
+                        .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lNInfoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
+                        .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(260, Short.MAX_VALUE)))
+        );
+
+        employeeSearchField.setBorder(null);
+        employeeSearchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeSearchFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Employee #:");
+
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(infoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employeeSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(employeeSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel10))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        parentPanel.add(searchPanel, "card3");
+
+        partTimePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        addPTEmployeeButton.setText("Add Employee");
+        addPTEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPTEmployeeButtonActionPerformed(evt);
+            }
+        });
+
+        hourlyWageFeild.setBorder(null);
+        hourlyWageFeild.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hourlyWageFeildActionPerformed(evt);
+            }
+        });
+
+        hourlyWageField.setText("Hourly Wage");
+
+        hoursPerWeekField.setBorder(null);
+        hoursPerWeekField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hoursPerWeekFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Hours per Week");
+
+        weeksPerYearField.setBorder(null);
+        weeksPerYearField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weeksPerYearFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Weeks per Year");
+
+        javax.swing.GroupLayout partTimePanelLayout = new javax.swing.GroupLayout(partTimePanel);
+        partTimePanel.setLayout(partTimePanelLayout);
+        partTimePanelLayout.setHorizontalGroup(
+            partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, partTimePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addPTEmployeeButton)
+                .addGap(18, 18, 18))
+            .addGroup(partTimePanelLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hourlyWageField)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hourlyWageFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hoursPerWeekField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(weeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+        partTimePanelLayout.setVerticalGroup(
+            partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, partTimePanelLayout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(hourlyWageFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(hourlyWageField))
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(hoursPerWeekField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11))
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(weeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12))
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(addPTEmployeeButton)
+                .addGap(14, 14, 14))
+        );
+
+        parentPanel.add(partTimePanel, "card4");
+
+        fullTimePanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        addFTEmployeeButton.setText("Add Employee");
+        addFTEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addFTEmployeeButtonActionPerformed(evt);
+            }
+        });
+
+        yearlySalaryField.setBorder(null);
+        yearlySalaryField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearlySalaryFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Yearly Salary");
+
+        javax.swing.GroupLayout fullTimePanelLayout = new javax.swing.GroupLayout(fullTimePanel);
+        fullTimePanel.setLayout(fullTimePanelLayout);
+        fullTimePanelLayout.setHorizontalGroup(
+            fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fullTimePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addFTEmployeeButton)
+                .addGap(18, 18, 18))
+            .addGroup(fullTimePanelLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(yearlySalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(241, Short.MAX_VALUE))
+        );
+        fullTimePanelLayout.setVerticalGroup(
+            fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fullTimePanelLayout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(yearlySalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13))
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addComponent(addFTEmployeeButton)
+                .addGap(14, 14, 14))
+        );
+
+        parentPanel.add(fullTimePanel, "card5");
+
+        viewPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable2.setCellSelectionEnabled(true);
+        jScrollPane3.setViewportView(jTable2);
+
+
+        javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
+        viewPanel.setLayout(viewPanelLayout);
+        viewPanelLayout.setHorizontalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        viewPanelLayout.setVerticalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        parentPanel.add(viewPanel, "card6");
 
         addPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -488,175 +1154,6 @@ public class JFrame extends javax.swing.JFrame {
 
         parentPanel.add(addPanel, "card2");
 
-        removePanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout removePanelLayout = new javax.swing.GroupLayout(removePanel);
-        removePanel.setLayout(removePanelLayout);
-        removePanelLayout.setHorizontalGroup(
-            removePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
-        );
-        removePanelLayout.setVerticalGroup(
-            removePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
-        );
-
-        parentPanel.add(removePanel, "card3");
-
-        partTimePanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        addPTEmployeeButton.setText("Add Employee");
-        addPTEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addPTEmployeeButtonActionPerformed(evt);
-            }
-        });
-
-        hourlyWageFeild.setBorder(null);
-        hourlyWageFeild.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hourlyWageFeildActionPerformed(evt);
-            }
-        });
-
-        hourlyWageField.setText("Hourly Wage");
-
-        hoursPerWeekField.setBorder(null);
-        hoursPerWeekField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hoursPerWeekFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("Hours per Week");
-
-        weeksPerYearField.setBorder(null);
-        weeksPerYearField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                weeksPerYearFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setText("Weeks per Year");
-
-        javax.swing.GroupLayout partTimePanelLayout = new javax.swing.GroupLayout(partTimePanel);
-        partTimePanel.setLayout(partTimePanelLayout);
-        partTimePanelLayout.setHorizontalGroup(
-            partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, partTimePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addPTEmployeeButton)
-                .addGap(18, 18, 18))
-            .addGroup(partTimePanelLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hourlyWageField)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hourlyWageFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hoursPerWeekField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(weeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(178, Short.MAX_VALUE))
-        );
-        partTimePanelLayout.setVerticalGroup(
-            partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, partTimePanelLayout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(hourlyWageFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(hourlyWageField))
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(hoursPerWeekField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11))
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(weeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12))
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addComponent(addPTEmployeeButton)
-                .addGap(14, 14, 14))
-        );
-
-        parentPanel.add(partTimePanel, "card4");
-
-        fullTimePanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        addFTEmployeeButton.setText("Add Employee");
-        addFTEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addFTEmployeeButtonActionPerformed(evt);
-            }
-        });
-
-        yearlySalaryField.setBorder(null);
-        yearlySalaryField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearlySalaryFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setText("Yearly Salary");
-
-        javax.swing.GroupLayout fullTimePanelLayout = new javax.swing.GroupLayout(fullTimePanel);
-        fullTimePanel.setLayout(fullTimePanelLayout);
-        fullTimePanelLayout.setHorizontalGroup(
-            fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fullTimePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addFTEmployeeButton)
-                .addGap(18, 18, 18))
-            .addGroup(fullTimePanelLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(yearlySalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(198, Short.MAX_VALUE))
-        );
-        fullTimePanelLayout.setVerticalGroup(
-            fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fullTimePanelLayout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(yearlySalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel13))
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                .addComponent(addFTEmployeeButton)
-                .addGap(14, 14, 14))
-        );
-
-        parentPanel.add(fullTimePanel, "card5");
-
-        viewPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
-        viewPanel.setLayout(viewPanelLayout);
-        viewPanelLayout.setHorizontalGroup(
-            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
-        );
-        viewPanelLayout.setVerticalGroup(
-            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
-        );
-
-        parentPanel.add(viewPanel, "card6");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -674,77 +1171,77 @@ public class JFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void fNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fNFieldActionPerformed
-
+    
     private void lNFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lNFieldActionPerformed
-
+    
     private void empNumFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empNumFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_empNumFieldActionPerformed
-
+    
     private void deductFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deductFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deductFieldActionPerformed
-
+    
     private void maleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleRadioButtonActionPerformed
         // TODO add your handling code here:
         gender = Gender.MALE;
     }//GEN-LAST:event_maleRadioButtonActionPerformed
-
+    
     private void missRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missRadioButtonActionPerformed
         // TODO add your handling code here:
         location = Location.MISSISSAUGA;
     }//GEN-LAST:event_missRadioButtonActionPerformed
-
+    
     private void partTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partTimeRadioButtonActionPerformed
         // TODO add your handling code here:
-
-
+        
+        
     }//GEN-LAST:event_partTimeRadioButtonActionPerformed
-
+    
     private void fullTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullTimeRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fullTimeRadioButtonActionPerformed
-
+    
     private void addButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseEntered
         // TODO add your handling code here:
         setBackground(addButton);
     }//GEN-LAST:event_addButtonMouseEntered
-
-    private void removeButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseExited
+    
+    private void searchButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseExited
         // TODO add your handling code here:
-        resetBackground(removeButton);
-    }//GEN-LAST:event_removeButtonMouseExited
-
+        resetBackground(searchButton);
+    }//GEN-LAST:event_searchButtonMouseExited
+    
     private void addButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseExited
         // TODO add your handling code here:
         resetBackground(addButton);
     }//GEN-LAST:event_addButtonMouseExited
-
-    private void removeButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseEntered
+    
+    private void searchButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseEntered
         // TODO add your handling code here:
-        setBackground(removeButton);
-    }//GEN-LAST:event_removeButtonMouseEntered
-
+        setBackground(searchButton);
+    }//GEN-LAST:event_searchButtonMouseEntered
+    
     private void addButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addButtonMouseClicked
         // TODO add your handling code here:
         clear();
         addPanel.setVisible(true);
         currentPage = "add";
     }//GEN-LAST:event_addButtonMouseClicked
-
-    private void removeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseClicked
+    
+    private void searchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchButtonMouseClicked
         // TODO add your handling code here:
         clear();
-        removePanel.setVisible(true);
+        searchPanel.setVisible(true);
         currentPage = "remove";
-    }//GEN-LAST:event_removeButtonMouseClicked
-
+    }//GEN-LAST:event_searchButtonMouseClicked
+    
     private void addPTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPTEmployeeButtonActionPerformed
         // TODO add your handling code here:
         hourlyWage = Double.parseDouble(hourlyWageFeild.getText());
@@ -753,33 +1250,30 @@ public class JFrame extends javax.swing.JFrame {
         PartTimeEmployee someEmployee = new PartTimeEmployee(empNum, fN, lN, gender, location, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
         System.out.println(someEmployee.getEmpNumber());
         myHT.addEmployee(someEmployee);
-        JOptionPane.showMessageDialog(null, "Employee Successfully Added");
-        partTimePanel.setVisible(false);
-        addPanel.setVisible(true);
-                
-     
-        //myHT.addEmployee(new PartTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location, this.deductRate, Double.parseDouble(hourlyWageField.getText()), Double.parseDouble(hoursPerWeekField.getText()),Double.parseDouble(weeksPerYearField.getText())));
+        JOptionPane.showMessageDialog(null, "Employee Added!");
+        clear();
+        viewPanel.setVisible(true);
     }//GEN-LAST:event_addPTEmployeeButtonActionPerformed
-
+    
     private void hourlyWageFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourlyWageFeildActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hourlyWageFeildActionPerformed
-
+    
     private void hoursPerWeekFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoursPerWeekFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hoursPerWeekFieldActionPerformed
-
+    
     private void weeksPerYearFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weeksPerYearFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_weeksPerYearFieldActionPerformed
-
+    
     private void addContinueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addContinueButtonActionPerformed
         // TODO add your handling code here:
         fN = fNField.getText();
         lN = lNField.getText();
         empNum = Integer.parseInt(empNumField.getText());
         deductRate = Double.parseDouble(deductField.getText());
-
+        
         addPanel.setVisible(false);
         if (fullTimeRadioButton.isSelected()) {
             clear();
@@ -789,79 +1283,357 @@ public class JFrame extends javax.swing.JFrame {
             partTimePanel.setVisible(true);
         }
     }//GEN-LAST:event_addContinueButtonActionPerformed
-
+    
     private void otherRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherRadioButtonActionPerformed
         // TODO add your handling code here:
         gender = Gender.OTHER;
-
+        
     }//GEN-LAST:event_otherRadioButtonActionPerformed
-
+    
     private void femaleRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleRadioButtonActionPerformed
         // TODO add your handling code here:
         gender = Gender.FEMALE;
     }//GEN-LAST:event_femaleRadioButtonActionPerformed
-
+    
     private void brampRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brampRadioButtonActionPerformed
         // TODO add your handling code here:
         location = Location.BRAMPTON;
     }//GEN-LAST:event_brampRadioButtonActionPerformed
-
+    
     private void torontoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torontoRadioButtonActionPerformed
         // TODO add your handling code here:
         location = Location.TORONTO;
     }//GEN-LAST:event_torontoRadioButtonActionPerformed
-
+    
     private void addFTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFTEmployeeButtonActionPerformed
+
         yearlySalary = Integer.parseInt(yearlySalaryField.getText());
         FullTimeEmployee someEmployee = new FullTimeEmployee(empNum, fN, lN, gender, location, deductRate, yearlySalary);
         myHT.addEmployee(someEmployee);
         JOptionPane.showMessageDialog(null, "Employee Successfully Added");
-        fullTimePanel.setVisible(false);
-        addPanel.setVisible(true);
-    
+        clear();
+        viewPanel.setVisible(true);
     }//GEN-LAST:event_addFTEmployeeButtonActionPerformed
-
+    
     private void yearlySalaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlySalaryFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_yearlySalaryFieldActionPerformed
-
+    
     private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
         // TODO add your handling code here:
         clear();
         viewPanel.setVisible(true);
         currentPage = "view";
     }//GEN-LAST:event_viewButtonMouseClicked
-
+    
     private void viewButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseExited
         // TODO add your handling code here:
-        clear();
         resetBackground(viewButton);
     }//GEN-LAST:event_viewButtonMouseExited
-
+    
     private void viewButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseEntered
         // TODO add your handling code here:
         setBackground(viewButton);
     }//GEN-LAST:event_viewButtonMouseEntered
-
+    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         myHT.writeToFile();
     }//GEN-LAST:event_formWindowClosing
-
-    private void setBackground(JPanel panel) {
+    
+    private void employeeSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeSearchFieldActionPerformed
+        // TODO add your handling code here:
+        int toFind = Integer.parseInt(employeeSearchField.getText());
+        EmployeeInfo found = null;
+        found = myHT.search(toFind);
+        
+        if (found == null){
+            JOptionPane.showMessageDialog(null, "No Employee Found");
+        } else {
+            fNInfoField.setText(found.getFirstName());
+            lNInfoField.setText(found.getLastName());
+            deductInfoField.setText(Integer.toString((int) found.getDeductRate()));
+            
+            if(found instanceof PartTimeEmployee){
+                partTimeInfoRadioButton.setSelected(true);
+                
+                hoursPerWeekInfoField.setText(Double.toString(((PartTimeEmployee) found).getHoursPerWeek()));
+                hoursPerWeekInfoField.setEditable(false);
+                hourlyWageInfoField.setText(Double.toString(((PartTimeEmployee) found).getHourlyWage()));
+                hourlyWageInfoField.setEditable(false);
+                weeksPerYearInfoField.setText(Double.toString(((PartTimeEmployee) found).getWeeksPerYear()));
+                weeksPerYearInfoField.setEditable(false);
+                
+            } else if (found instanceof FullTimeEmployee){
+                fullTimeInfoRadioButton.setSelected(true);
+                yearlySalaryInfoField.setText(Double.toString(((FullTimeEmployee) found).AnnualGrossIncome()));
+            }
+            
+            if (found.getGender() == Gender.MALE){
+                maleInfoRadioButton.setSelected(true);
+            } else if(found.getGender() == Gender.FEMALE){
+                femaleInfoRadioButton.setSelected(true);
+            } else if(found.getGender() == Gender.OTHER){
+                otherInfoRadioButton.setSelected(true);
+            }
+            
+            if (found.getLocation() == Location.BRAMPTON){
+                brampInfoRadioButton.setSelected(true);
+            } else if (found.getLocation() == Location.MISSISSAUGA){
+                missInfoRadioButton.setSelected(true);
+            } else if (found.getLocation() == Location.TORONTO){
+                torontoInfoRadioButton.setSelected(true);
+            }
+            
+            infoPanel.setVisible(true);
+        }
+    }//GEN-LAST:event_employeeSearchFieldActionPerformed
+    
+    private void fNInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNInfoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fNInfoFieldActionPerformed
+    
+    private void lNInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNInfoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lNInfoFieldActionPerformed
+    
+    private void deductInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deductInfoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deductInfoFieldActionPerformed
+    
+    private void maleInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleInfoRadioButtonActionPerformed
+        // TODO add your handling code here:
+        gender = Gender.MALE;
+    }//GEN-LAST:event_maleInfoRadioButtonActionPerformed
+    
+    private void femaleInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleInfoRadioButtonActionPerformed
+        // TODO add your handling code here:
+        gender = Gender.FEMALE;
+    }//GEN-LAST:event_femaleInfoRadioButtonActionPerformed
+    
+    private void otherInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_otherInfoRadioButtonActionPerformed
+        // TODO add your handling code here:
+        gender = Gender.OTHER;
+    }//GEN-LAST:event_otherInfoRadioButtonActionPerformed
+    
+    private void missInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missInfoRadioButtonActionPerformed
+        // TODO add your handling code here:
+        location = Location.MISSISSAUGA;
+    }//GEN-LAST:event_missInfoRadioButtonActionPerformed
+    
+    private void brampInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brampInfoRadioButtonActionPerformed
+        // TODO add your handling code here:
+        location = Location.BRAMPTON;
+    }//GEN-LAST:event_brampInfoRadioButtonActionPerformed
+    
+    private void torontoInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torontoInfoRadioButtonActionPerformed
+        // TODO add your handling code here:
+        location = Location.TORONTO;
+    }//GEN-LAST:event_torontoInfoRadioButtonActionPerformed
+    
+    private void partTimeInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partTimeInfoRadioButtonActionPerformed
+        // TODO add your handling code here:
+        hourlyWageInfoField.setEnabled(true);
+        hoursPerWeekInfoField.setEnabled(true);
+        weeksPerYearInfoField.setEnabled(true);
+        yearlySalaryInfoField.setEnabled(false);
+        
+    }//GEN-LAST:event_partTimeInfoRadioButtonActionPerformed
+    
+    private void fullTimeInfoRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullTimeInfoRadioButtonActionPerformed
+        // TODO add your handling code here:
+        hourlyWageInfoField.setEnabled(false);
+        hoursPerWeekInfoField.setEnabled(false);
+        weeksPerYearInfoField.setEnabled(false);
+        yearlySalaryInfoField.setEnabled(true);
+    }//GEN-LAST:event_fullTimeInfoRadioButtonActionPerformed
+    
+    private void hourlyWageInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourlyWageInfoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hourlyWageInfoFieldActionPerformed
+    
+    private void hoursPerWeekInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hoursPerWeekInfoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hoursPerWeekInfoFieldActionPerformed
+    
+    private void weeksPerYearInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weeksPerYearInfoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_weeksPerYearInfoFieldActionPerformed
+    
+    private void yearlySalaryInfoFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlySalaryInfoFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yearlySalaryInfoFieldActionPerformed
+    
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        // TODO add your handling code here:
+        preEdit.setVisible(false);
+        duringEdit.setVisible(true);
+        
+        if (partTimeInfoRadioButton.isSelected()){
+            yearlySalaryInfoField.setEnabled(false);
+        } else if (fullTimeInfoRadioButton.isSelected()){
+            hourlyWageInfoField.setEnabled(true);
+            hoursPerWeekInfoField.setEnabled(true);
+            weeksPerYearInfoField.setEnabled(true);
+        }
+        
+        fNInfoField.setEditable(true);
+        lNInfoField.setEditable(true);
+        deductInfoField.setEditable(true);
+        hourlyWageInfoField.setEditable(true);
+        hoursPerWeekInfoField.setEditable(true);
+        weeksPerYearInfoField.setEditable(true);
+        yearlySalaryInfoField.setEditable(true);
+        maleInfoRadioButton.setEnabled(true);
+        maleInfoRadioButton.setEnabled(true);
+        femaleInfoRadioButton.setEnabled(true);
+        otherInfoRadioButton.setEnabled(true);
+        missInfoRadioButton.setEnabled(true);
+        brampInfoRadioButton.setEnabled(true);
+        torontoInfoRadioButton.setEnabled(true);
+        partTimeInfoRadioButton.setEnabled(true);
+        fullTimeInfoRadioButton.setEnabled(true);
+        
+        
+        
+    }//GEN-LAST:event_editButtonActionPerformed
+    
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:v
+        
+        int toFind = Integer.parseInt(employeeSearchField.getText());
+        EmployeeInfo found = null;
+        found = myHT.search(toFind);
+        
+            fNInfoField.setText(found.getFirstName());
+            lNInfoField.setText(found.getLastName());
+            deductInfoField.setText(Integer.toString((int) found.getDeductRate()));
+            
+            if(found instanceof PartTimeEmployee){
+                partTimeInfoRadioButton.setSelected(true);
+                
+                hoursPerWeekInfoField.setText(Double.toString(((PartTimeEmployee) found).getHoursPerWeek()));
+                hoursPerWeekInfoField.setEditable(false);
+                hourlyWageInfoField.setText(Double.toString(((PartTimeEmployee) found).getHourlyWage()));
+                hourlyWageInfoField.setEditable(false);
+                weeksPerYearInfoField.setText(Double.toString(((PartTimeEmployee) found).getWeeksPerYear()));
+                weeksPerYearInfoField.setEditable(false);
+                
+            } else if (found instanceof FullTimeEmployee){
+                fullTimeInfoRadioButton.setSelected(true);
+                yearlySalaryInfoField.setText(Double.toString(((FullTimeEmployee) found).AnnualGrossIncome()));
+            }
+            
+            if (found.getGender() == Gender.MALE){
+                maleInfoRadioButton.setSelected(true);
+            } else if(found.getGender() == Gender.FEMALE){
+                femaleInfoRadioButton.setSelected(true);
+            } else if(found.getGender() == Gender.OTHER){
+                otherInfoRadioButton.setSelected(true);
+            }
+            
+            if (found.getLocation() == Location.BRAMPTON){
+                brampInfoRadioButton.setSelected(true);
+            } else if (found.getLocation() == Location.MISSISSAUGA){
+                missInfoRadioButton.setSelected(true);
+            } else if (found.getLocation() == Location.TORONTO){
+                torontoInfoRadioButton.setSelected(true);
+            }
+            
+            fNInfoField.setEditable(false);
+            lNInfoField.setEditable(false);
+            deductInfoField.setEditable(false);
+            hourlyWageInfoField.setEditable(false);
+            hoursPerWeekInfoField.setEditable(false);
+            weeksPerYearInfoField.setEditable(false);
+            yearlySalaryInfoField.setEditable(false);
+            maleInfoRadioButton.setEnabled(false);
+            maleInfoRadioButton.setEnabled(false);
+            femaleInfoRadioButton.setEnabled(false);
+            otherInfoRadioButton.setEnabled(false);
+            missInfoRadioButton.setEnabled(false);
+            brampInfoRadioButton.setEnabled(false);
+            torontoInfoRadioButton.setEnabled(false);
+            partTimeInfoRadioButton.setEnabled(false);
+            fullTimeInfoRadioButton.setEnabled(false);
+            
+            
+            preEdit.setVisible(true);
+            duringEdit.setVisible(false);
+        
+    }//GEN-LAST:event_cancelButtonActionPerformed
+    
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // TODO add your handling code here:
+        int toRemove = Integer.parseInt(employeeSearchField.getText());
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete?");
+        if (response == JOptionPane.YES_OPTION){
+            myHT.removeEmployee(myHT.search(toRemove));
+            JOptionPane.showMessageDialog(null, "The employee has been deleted");
+            infoPanel.setVisible(false);
+        } else if (response == JOptionPane.NO_OPTION || response == JOptionPane.CLOSED_OPTION || response == JOptionPane.CANCEL_OPTION) {
+            
+        }
+        
+    }//GEN-LAST:event_removeButtonActionPerformed
+    
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // TODO add your handling code here:
+        myHT.removeEmployee(myHT.search(Integer.parseInt(employeeSearchField.getText())));
+        fN = fNInfoField.getText();
+        lN = lNInfoField.getText();
+        empNum = Integer.parseInt(employeeSearchField.getText());
+        deductRate = Double.parseDouble(deductInfoField.getText());
+        if (partTimeInfoRadioButton.isSelected()){
+            hourlyWage = Double.parseDouble(hourlyWageInfoField.getText());
+            hoursPerWeek = Double.parseDouble(hoursPerWeekInfoField.getText());
+            weeksPerYear = Double.parseDouble(weeksPerYearInfoField.getText());
+            PartTimeEmployee someEmployee = new PartTimeEmployee(empNum, fN, lN, gender, location, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
+            System.out.println(someEmployee.getEmpNumber());
+            myHT.addEmployee(someEmployee);
+        } else if (fullTimeInfoRadioButton.isSelected()){
+            myHT.addEmployee(new FullTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location,
+                    this.deductRate,Integer.parseInt(yearlySalaryInfoField.getText())));
+        }
+        JOptionPane.showMessageDialog(null, "Employee Edited!");
+        
+        fNInfoField.setEditable(false);
+        lNInfoField.setEditable(false);
+        deductInfoField.setEditable(false);
+        hourlyWageInfoField.setEditable(false);
+        hoursPerWeekInfoField.setEditable(false);
+        weeksPerYearInfoField.setEditable(false);
+        yearlySalaryInfoField.setEditable(false);
+        maleInfoRadioButton.setEnabled(false);
+        maleInfoRadioButton.setEnabled(false);
+        femaleInfoRadioButton.setEnabled(false);
+        otherInfoRadioButton.setEnabled(false);
+        missInfoRadioButton.setEnabled(false);
+        brampInfoRadioButton.setEnabled(false);
+        torontoInfoRadioButton.setEnabled(false);
+        partTimeInfoRadioButton.setEnabled(false);
+        fullTimeInfoRadioButton.setEnabled(false);
+        
+        duringEdit.setVisible(false);
+        preEdit.setVisible(true);
+    }//GEN-LAST:event_saveButtonActionPerformed
+    
+    private void setBackground(JPanel panel){
         panel.setBackground(new Color(148, 204, 248));
     }
-
+    
     private void resetBackground(JPanel panel) {
         panel.setBackground(new Color(100, 181, 246));
     }
-
+    
     private void clear() {
         addPanel.setVisible(false);
-        removePanel.setVisible(false);
+        searchPanel.setVisible(false);
         partTimePanel.setVisible(false);
         fullTimePanel.setVisible(false);
+        infoPanel.setVisible(false);
+        viewPanel.setVisible(false);
     }
-
+    
     /**
      * @param args the command line arguments
      */
@@ -869,8 +1641,8 @@ public class JFrame extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -888,7 +1660,7 @@ public class JFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -896,31 +1668,53 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addButton;
     private javax.swing.JButton addContinueButton;
     private javax.swing.JButton addFTEmployeeButton;
     private javax.swing.JButton addPTEmployeeButton;
     private javax.swing.JPanel addPanel;
+    private javax.swing.JRadioButton brampInfoRadioButton;
     private javax.swing.JRadioButton brampRadioButton;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField deductField;
+    private javax.swing.JTextField deductInfoField;
+    private javax.swing.JPanel duringEdit;
+    private javax.swing.JButton editButton;
     private javax.swing.JTextField empNumField;
+    private javax.swing.JTextField employeeSearchField;
     private javax.swing.ButtonGroup employmentStatus;
     private javax.swing.JTextField fNField;
+    private javax.swing.JTextField fNInfoField;
+    private javax.swing.JRadioButton femaleInfoRadioButton;
     private javax.swing.JRadioButton femaleRadioButton;
+    private javax.swing.JRadioButton fullTimeInfoRadioButton;
     private javax.swing.JPanel fullTimePanel;
     private javax.swing.JRadioButton fullTimeRadioButton;
     private javax.swing.ButtonGroup genderGroup;
     private javax.swing.JTextField hourlyWageFeild;
     private javax.swing.JLabel hourlyWageField;
+    private javax.swing.JLabel hourlyWageField1;
+    private javax.swing.JTextField hourlyWageInfoField;
     private javax.swing.JTextField hoursPerWeekField;
+    private javax.swing.JTextField hoursPerWeekInfoField;
+    private javax.swing.JPanel infoPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -930,29 +1724,51 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
+    private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField lNField;
+    private javax.swing.JTextField lNInfoField;
     private javax.swing.ButtonGroup locationGroup;
+    private javax.swing.JRadioButton maleInfoRadioButton;
     private javax.swing.JRadioButton maleRadioButton;
+    private javax.swing.JRadioButton missInfoRadioButton;
     private javax.swing.JRadioButton missRadioButton;
+    private javax.swing.JRadioButton otherInfoRadioButton;
     private javax.swing.JRadioButton otherRadioButton;
     private javax.swing.JPanel parentPanel;
+    private javax.swing.JRadioButton partTimeInfoRadioButton;
     private javax.swing.JPanel partTimePanel;
     private javax.swing.JRadioButton partTimeRadioButton;
-    private javax.swing.JPanel removeButton;
-    private javax.swing.JPanel removePanel;
+    private javax.swing.JPanel preEdit;
+    private javax.swing.JButton removeButton;
+    private javax.swing.JButton saveButton;
+    private javax.swing.JPanel searchButton;
+    private javax.swing.JPanel searchChoiceParent;
+    private javax.swing.JPanel searchPanel;
     private javax.swing.JPanel sidePanel;
+    private javax.swing.JRadioButton torontoInfoRadioButton;
     private javax.swing.JRadioButton torontoRadioButton;
     private javax.swing.JPanel viewButton;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JTextField weeksPerYearField;
+    private javax.swing.JTextField weeksPerYearInfoField;
     private javax.swing.JTextField yearlySalaryField;
+    private javax.swing.JTextField yearlySalaryInfoField;
     // End of variables declaration//GEN-END:variables
 }

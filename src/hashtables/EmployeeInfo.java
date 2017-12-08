@@ -63,7 +63,7 @@ public class EmployeeInfo {
 			 System.out.println("Hourly Wage: "+thePTE.calcAnnualGrossIncome());
 		} else if (this instanceof FullTimeEmployee){
 			FullTimeEmployee theFTE = (FullTimeEmployee) this;
-			 System.out.println("Hourly Wage: "+theFTE.calcAnnualGrossIncome());
+			 System.out.println("Hourly Wage: "+theFTE.AnnualGrossIncome());
 		}
 	}
 	
