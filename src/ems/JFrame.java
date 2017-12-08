@@ -27,14 +27,15 @@ public class JFrame extends javax.swing.JFrame {
     int empNum;
     Location location;
     double deductRate, hourlyWage, hoursPerWeek, weeksPerYear;
-
-    ;
+    int yearlySalary;//
+    
     /**
      * Creates new form JFrame
      */
     public JFrame() {
         initComponents();
         myHT = new MyHashTable(2);
+        myHT.readFromFile();
     }
 
     /**
@@ -102,8 +103,6 @@ public class JFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         viewPanel = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -645,34 +644,15 @@ public class JFrame extends javax.swing.JFrame {
 
         viewPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
-
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
         viewPanelLayout.setHorizontalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewPanelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+            .addGap(0, 414, Short.MAX_VALUE)
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+            .addGap(0, 383, Short.MAX_VALUE)
         );
 
         parentPanel.add(viewPanel, "card6");
@@ -773,8 +753,9 @@ public class JFrame extends javax.swing.JFrame {
         PartTimeEmployee someEmployee = new PartTimeEmployee(empNum, fN, lN, gender, location, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
         System.out.println(someEmployee.getEmpNumber());
         myHT.addEmployee(someEmployee);
-        JOptionPane.showMessageDialog(null, "fuck off ani");
-              
+        JOptionPane.showMessageDialog(null, "Employee Successfully Added");
+        partTimePanel.setVisible(false);
+        addPanel.setVisible(true);
                 
      
         //myHT.addEmployee(new PartTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location, this.deductRate, Double.parseDouble(hourlyWageField.getText()), Double.parseDouble(hoursPerWeekField.getText()),Double.parseDouble(weeksPerYearField.getText())));
@@ -831,9 +812,12 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_torontoRadioButtonActionPerformed
 
     private void addFTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFTEmployeeButtonActionPerformed
-        // TODO add your handling code here:
-        myHT.addEmployee(new FullTimeEmployee(this.empNum,this.fN, this.lN, this.gender,  this.location,
-			this.deductRate,Integer.parseInt(yearlySalaryField.getText())));
+        yearlySalary = Integer.parseInt(yearlySalaryField.getText());
+        FullTimeEmployee someEmployee = new FullTimeEmployee(empNum, fN, lN, gender, location, deductRate, yearlySalary);
+        myHT.addEmployee(someEmployee);
+        JOptionPane.showMessageDialog(null, "Employee Successfully Added");
+        fullTimePanel.setVisible(false);
+        addPanel.setVisible(true);
     
     }//GEN-LAST:event_addFTEmployeeButtonActionPerformed
 
@@ -860,16 +844,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_viewButtonMouseEntered
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-//        for (int i = 0; i < buckets.length; i++) {
-//			// For the current bucket, print out the empNum for each item in its ArrayList.
-//			int listSize = buckets[i].size();
-//			if (listSize != 0) {
-//				for (int j = 0; j < listSize; j++) {
-//					EmployeeInfo theEmployee = buckets[i].get(j);
-//					displayEmployee(theEmployee.getEmpNum());
-//				}
-//			}
-//		}
+        myHT.writeToFile();
     }//GEN-LAST:event_formWindowClosing
 
     private void setBackground(JPanel panel) {
@@ -955,7 +930,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -964,7 +938,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField lNField;
     private javax.swing.ButtonGroup locationGroup;
     private javax.swing.JRadioButton maleRadioButton;
