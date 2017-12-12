@@ -109,6 +109,7 @@ public class JFrame extends javax.swing.JFrame {
         duringEdit = new javax.swing.JPanel();
         cancelButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
+        jSlider1 = new javax.swing.JSlider();
         employeeSearchField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
@@ -608,6 +609,10 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(92, 92, 92)
                 .addComponent(searchChoiceParent, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
             .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(infoPanelLayout.createSequentialGroup()
                     .addGap(23, 23, 23)
@@ -629,7 +634,9 @@ public class JFrame extends javax.swing.JFrame {
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
+                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
                         .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1159,7 +1166,7 @@ public class JFrame extends javax.swing.JFrame {
         jLabel24.setText("Hit the Add button to get started");
 
         jLabel25.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
-        jLabel25.setText("<html><div>Made with &hearts; by <a href=\"http://animanny.com\" style=\"text-decoration:none;\">Ani Srikanth</a> and <a href=\"https://github.com/saharshhariharan\" style=\"text-decoration:none;\">Saharsh Hariharan</a></div></html>");
+        jLabel25.setText("<html>Made with <span style=\"color:red;\">&hearts;</span> by Ani Srikanth and Saharsh Hariharan</html>");
 
         javax.swing.GroupLayout welcomePanelLayout = new javax.swing.GroupLayout(welcomePanel);
         welcomePanel.setLayout(welcomePanelLayout);
@@ -1168,17 +1175,17 @@ public class JFrame extends javax.swing.JFrame {
             .addGroup(welcomePanelLayout.createSequentialGroup()
                 .addGroup(welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(welcomePanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(welcomePanelLayout.createSequentialGroup()
                         .addGroup(welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(welcomePanelLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(welcomePanelLayout.createSequentialGroup()
                                 .addGap(59, 59, 59)
-                                .addComponent(jLabel24)))
-                        .addGap(0, 25, Short.MAX_VALUE)))
+                                .addComponent(jLabel24))
+                            .addGroup(welcomePanelLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 25, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomePanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         welcomePanelLayout.setVerticalGroup(
@@ -1788,6 +1795,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JSlider jSlider1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField lNField;
     private javax.swing.JTextField lNInfoField;
