@@ -88,7 +88,7 @@ public class MyHashTable {
 
 	}
         
-        public void readFromFile() {
+       public void readFromFile() {
             BufferedReader reader;
             
             try {
@@ -102,42 +102,42 @@ public class MyHashTable {
                             line = reader.readLine();
                             int empNum = Integer.parseInt(line);
                             line = reader.readLine();
-			String firstName = line;
-			line = reader.readLine();
-			String lastName = line;
-			line = reader.readLine();
-			Gender gender = Gender.valueOf(line); 
-			line = reader.readLine();
-			Location location = Location.valueOf(line);
-			line = reader.readLine();
-			Double deductRate = Double.parseDouble(line);
-			line = reader.readLine();
-			Double hourlyWage = Double.parseDouble(line);
-			line = reader.readLine();
-			Double hoursPerWeek = Double.parseDouble(line);
-			line = reader.readLine();
-			Double weeksPerYear = Double.parseDouble(line);
-			line = reader.readLine();
-			EmployeeInfo theEmployee = new PartTimeEmployee(empNum, firstName, lastName, gender, location,
-			deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
-			addEmployee(theEmployee);		
-                    } else if ( line.equals("Full Time Employee")) {
-                        line = reader.readLine();  //reads employee number
-                        int empnum = Integer.parseInt(line);
-                        line = reader.readLine();  //reads first name
-                        String firstname = line;
-                        line = reader.readLine();  //reads lastname
-                        String lastname = line;
-                        line = reader.readLine();  //reads deduct rate
-                        double deductrate = Double.parseDouble(line);
-                        line = reader.readLine(); // reads gender
-                        Gender gender = Gender.valueOf(line); //converts the string value gender into the Gender enum
-                        line = reader.readLine();  //reads location
-                        Location location = Location.valueOf(line);  //converts the string value location into the Location enum
-                        line = reader.readLine();
-                        double yearlySalary = Double.parseDouble(line);
-                        EmployeeInfo theEmployee = new FullTimeEmployee (empnum, firstname, lastname, gender, location, deductrate, yearlySalary);
-                        addEmployee(theEmployee);
+                            String firstName = line;
+                            line = reader.readLine();
+                            String lastName = line;
+                            line = reader.readLine();
+                            Double deductRate = Double.parseDouble(line);
+                            line = reader.readLine();
+                            Gender gender = Gender.valueOf(line);
+                            line = reader.readLine();
+                            Location location = Location.valueOf(line);
+                            line = reader.readLine();
+                            Double hourlyWage = Double.parseDouble(line);
+                            line = reader.readLine();//comment
+                            Double hoursPerWeek = Double.parseDouble(line);
+                            line = reader.readLine();
+                            Double weeksPerYear = Double.parseDouble(line);
+                            line = reader.readLine();
+                            EmployeeInfo theEmployee = new PartTimeEmployee(empNum, firstName, lastName, gender, location,
+                            deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
+                            addEmployee(theEmployee);		
+                        }else if ( line.equals("Full Time Employee")) {
+                            line = reader.readLine();  //reads employee number
+                            int empnum = Integer.parseInt(line);
+                            line = reader.readLine();  //reads first name
+                            String firstname = line;
+                            line = reader.readLine();  //reads lastname
+                            String lastname = line;
+                            line = reader.readLine();  //reads deduct rate
+                            double deductrate = Double.parseDouble(line);
+                            line = reader.readLine(); // reads gender
+                            Gender gender = Gender.valueOf(line); //converts the string value gender into the Gender enum
+                            line = reader.readLine();  //reads location
+                            Location location = Location.valueOf(line);  //converts the string value location into the Location enum
+                            line = reader.readLine();
+                            double yearlySalary = Double.parseDouble(line);
+                            EmployeeInfo theEmployee = new FullTimeEmployee (empnum, firstname, lastname, gender, location, deductrate, yearlySalary);
+                            addEmployee(theEmployee);
                     }
                        
                 }                 
@@ -148,6 +148,7 @@ public class MyHashTable {
                 //System.out.println("Error reading file");
             }
         }
+
         
         public void writeToFile() {
             try {
@@ -185,5 +186,22 @@ public class MyHashTable {
                 JOptionPane.showMessageDialog(null, "File Not Found"); //makesure
             }
         }
+        
+        public void writeToTable (String fn, String ln, int en, Gender gender, Location location, Double dr, Double hW, Double hPw, Double wPy, Double ys) {
+            for (int i = 0; i < buckets.length; i++) {
+			int listSize = buckets[i].size();
+			if (listSize == 0) {
+                            System.out.println("  Nothing in its ArrayList!");
+			} else {
+                            for (int j = 0; j < listSize; j++) {
+                                
+				en = buckets[i].get(j).getEmpNumber();
+				//
+                            }
+			}
+
+		}
+        }
+        
 }
 
