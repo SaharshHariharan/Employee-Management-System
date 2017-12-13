@@ -113,7 +113,7 @@ public class MyHashTable {
                             Location location = Location.valueOf(line);
                             line = reader.readLine();
                             Double hourlyWage = Double.parseDouble(line);
-                            line = reader.readLine();
+                            line = reader.readLine();//comment
                             Double hoursPerWeek = Double.parseDouble(line);
                             line = reader.readLine();
                             Double weeksPerYear = Double.parseDouble(line);
