@@ -27,21 +27,21 @@ public class JFrame extends javax.swing.JFrame {
     int empNum;
     Location location;
     double deductRate, hourlyWage, hoursPerWeek, weeksPerYear;
-
+    
     int yearlySalary;//
     
-
+    
     /**
      * Creates new form JFrame
      */
     public JFrame() {
         initComponents();
         myHT = new MyHashTable(2);
- 
+        
         myHT.readFromFile();
         clear();
         welcomePanel.setVisible(true);
-
+        
     }
     
     /**
@@ -109,7 +109,6 @@ public class JFrame extends javax.swing.JFrame {
         duringEdit = new javax.swing.JPanel();
         cancelButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
-        jSlider1 = new javax.swing.JSlider();
         employeeSearchField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
@@ -609,10 +608,6 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(92, 92, 92)
                 .addComponent(searchChoiceParent, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
             .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(infoPanelLayout.createSequentialGroup()
                     .addGap(23, 23, 23)
@@ -634,9 +629,7 @@ public class JFrame extends javax.swing.JFrame {
         infoPanelLayout.setVerticalGroup(
             infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
                         .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1354,7 +1347,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_torontoRadioButtonActionPerformed
     
     private void addFTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFTEmployeeButtonActionPerformed
-
+        
         yearlySalary = Integer.parseInt(yearlySalaryField.getText());
         FullTimeEmployee someEmployee = new FullTimeEmployee(empNum, fN, lN, gender, location, deductRate, yearlySalary);
         myHT.addEmployee(someEmployee);
@@ -1483,6 +1476,7 @@ public class JFrame extends javax.swing.JFrame {
         hourlyWageInfoField.setEnabled(true);
         hoursPerWeekInfoField.setEnabled(true);
         weeksPerYearInfoField.setEnabled(true);
+        yearlySalaryInfoField.setText("");
         yearlySalaryInfoField.setEnabled(false);
         
     }//GEN-LAST:event_partTimeInfoRadioButtonActionPerformed
@@ -1492,6 +1486,9 @@ public class JFrame extends javax.swing.JFrame {
         hourlyWageInfoField.setEnabled(false);
         hoursPerWeekInfoField.setEnabled(false);
         weeksPerYearInfoField.setEnabled(false);
+        hourlyWageInfoField.setText("");
+        hoursPerWeekInfoField.setText("");
+        weeksPerYearInfoField.setText("");
         yearlySalaryInfoField.setEnabled(true);
     }//GEN-LAST:event_fullTimeInfoRadioButtonActionPerformed
     
@@ -1552,61 +1549,66 @@ public class JFrame extends javax.swing.JFrame {
         EmployeeInfo found = null;
         found = myHT.search(toFind);
         
-            fNInfoField.setText(found.getFirstName());
-            lNInfoField.setText(found.getLastName());
-            deductInfoField.setText(Integer.toString((int) found.getDeductRate()));
+        fNInfoField.setText(found.getFirstName());
+        lNInfoField.setText(found.getLastName());
+        deductInfoField.setText(Integer.toString((int) found.getDeductRate()));
+        hoursPerWeekInfoField.setText("");
+        hourlyWageInfoField.setText("");
+        weeksPerYearInfoField.setText("");
+        yearlySalaryInfoField.setText("");
+        
+        
+        if(found instanceof PartTimeEmployee){
+            partTimeInfoRadioButton.setSelected(true);
             
-            if(found instanceof PartTimeEmployee){
-                partTimeInfoRadioButton.setSelected(true);
-                
-                hoursPerWeekInfoField.setText(Double.toString(((PartTimeEmployee) found).getHoursPerWeek()));
-                hoursPerWeekInfoField.setEditable(false);
-                hourlyWageInfoField.setText(Double.toString(((PartTimeEmployee) found).getHourlyWage()));
-                hourlyWageInfoField.setEditable(false);
-                weeksPerYearInfoField.setText(Double.toString(((PartTimeEmployee) found).getWeeksPerYear()));
-                weeksPerYearInfoField.setEditable(false);
-                
-            } else if (found instanceof FullTimeEmployee){
-                fullTimeInfoRadioButton.setSelected(true);
-                yearlySalaryInfoField.setText(Double.toString(((FullTimeEmployee) found).AnnualGrossIncome()));
-            }
-            
-            if (found.getGender() == Gender.MALE){
-                maleInfoRadioButton.setSelected(true);
-            } else if(found.getGender() == Gender.FEMALE){
-                femaleInfoRadioButton.setSelected(true);
-            } else if(found.getGender() == Gender.OTHER){
-                otherInfoRadioButton.setSelected(true);
-            }
-            
-            if (found.getLocation() == Location.BRAMPTON){
-                brampInfoRadioButton.setSelected(true);
-            } else if (found.getLocation() == Location.MISSISSAUGA){
-                missInfoRadioButton.setSelected(true);
-            } else if (found.getLocation() == Location.TORONTO){
-                torontoInfoRadioButton.setSelected(true);
-            }
-            
-            fNInfoField.setEditable(false);
-            lNInfoField.setEditable(false);
-            deductInfoField.setEditable(false);
-            hourlyWageInfoField.setEditable(false);
+            hoursPerWeekInfoField.setText(Double.toString(((PartTimeEmployee) found).getHoursPerWeek()));
             hoursPerWeekInfoField.setEditable(false);
+            hourlyWageInfoField.setText(Double.toString(((PartTimeEmployee) found).getHourlyWage()));
+            hourlyWageInfoField.setEditable(false);
+            weeksPerYearInfoField.setText(Double.toString(((PartTimeEmployee) found).getWeeksPerYear()));
             weeksPerYearInfoField.setEditable(false);
-            yearlySalaryInfoField.setEditable(false);
-            maleInfoRadioButton.setEnabled(false);
-            maleInfoRadioButton.setEnabled(false);
-            femaleInfoRadioButton.setEnabled(false);
-            otherInfoRadioButton.setEnabled(false);
-            missInfoRadioButton.setEnabled(false);
-            brampInfoRadioButton.setEnabled(false);
-            torontoInfoRadioButton.setEnabled(false);
-            partTimeInfoRadioButton.setEnabled(false);
-            fullTimeInfoRadioButton.setEnabled(false);
             
-            
-            preEdit.setVisible(true);
-            duringEdit.setVisible(false);
+        } else if (found instanceof FullTimeEmployee){
+            fullTimeInfoRadioButton.setSelected(true);
+            yearlySalaryInfoField.setText(Double.toString(((FullTimeEmployee) found).AnnualGrossIncome()));
+        }
+        
+        if (found.getGender() == Gender.MALE){
+            maleInfoRadioButton.setSelected(true);
+        } else if(found.getGender() == Gender.FEMALE){
+            femaleInfoRadioButton.setSelected(true);
+        } else if(found.getGender() == Gender.OTHER){
+            otherInfoRadioButton.setSelected(true);
+        }
+        
+        if (found.getLocation() == Location.BRAMPTON){
+            brampInfoRadioButton.setSelected(true);
+        } else if (found.getLocation() == Location.MISSISSAUGA){
+            missInfoRadioButton.setSelected(true);
+        } else if (found.getLocation() == Location.TORONTO){
+            torontoInfoRadioButton.setSelected(true);
+        }
+        
+        fNInfoField.setEditable(false);
+        lNInfoField.setEditable(false);
+        deductInfoField.setEditable(false);
+        hourlyWageInfoField.setEditable(false);
+        hoursPerWeekInfoField.setEditable(false);
+        weeksPerYearInfoField.setEditable(false);
+        yearlySalaryInfoField.setEditable(false);
+        maleInfoRadioButton.setEnabled(false);
+        maleInfoRadioButton.setEnabled(false);
+        femaleInfoRadioButton.setEnabled(false);
+        otherInfoRadioButton.setEnabled(false);
+        missInfoRadioButton.setEnabled(false);
+        brampInfoRadioButton.setEnabled(false);
+        torontoInfoRadioButton.setEnabled(false);
+        partTimeInfoRadioButton.setEnabled(false);
+        fullTimeInfoRadioButton.setEnabled(false);
+        
+        
+        preEdit.setVisible(true);
+        duringEdit.setVisible(false);
         
     }//GEN-LAST:event_cancelButtonActionPerformed
     
@@ -1795,7 +1797,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField lNField;
     private javax.swing.JTextField lNInfoField;
