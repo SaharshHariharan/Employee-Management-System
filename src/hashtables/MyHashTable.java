@@ -185,5 +185,32 @@ public class MyHashTable {
                 JOptionPane.showMessageDialog(null, "File Not Found"); //makesure
             }
         }
+
+        
+        public void writeToTable (String fn, String ln, int en, Gender gender, Location location, Double dr, Double hW, Double hPw, Double wPy, Double ys) {
+            for (int i = 0; i < buckets.length; i++) {
+			int listSize = buckets[i].size();
+			if (listSize == 0) {
+                            System.out.println("  Nothing in its ArrayList!");
+			} else {
+                            for (int j = 0; j < listSize; j++) { //we gucci
+                                EmployeeInfo someEmployee = buckets[i].get(j);
+                                fn = someEmployee.getFirstName();
+                                ln = someEmployee.getLastName();
+				en = someEmployee.getEmpNumber();
+                                dr = someEmployee.getDeductRate();
+                                gender = someEmployee.getGender();
+                                location = someEmployee.getLocation();
+                                if (someEmployee instanceof PartTimeEmployee) {
+                                    
+                                }
+				
+                            }
+			}
+
+		}
+        }
+        
+
 }
 
