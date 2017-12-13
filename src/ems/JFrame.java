@@ -27,21 +27,21 @@ public class JFrame extends javax.swing.JFrame {
     int empNum;
     Location location;
     double deductRate, hourlyWage, hoursPerWeek, weeksPerYear;
-
+    
     int yearlySalary;//
     
-
+    
     /**
      * Creates new form JFrame
      */
     public JFrame() {
         initComponents();
         myHT = new MyHashTable(2);
- 
+        
         myHT.readFromFile();
         clear();
         welcomePanel.setVisible(true);
-
+        
     }
     
     /**
@@ -1159,7 +1159,7 @@ public class JFrame extends javax.swing.JFrame {
         jLabel24.setText("Hit the Add button to get started");
 
         jLabel25.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
-        jLabel25.setText("<html><div>Made with &hearts; by <a href=\"http://animanny.com\" style=\"text-decoration:none;\">Ani Srikanth</a> and <a href=\"https://github.com/saharshhariharan\" style=\"text-decoration:none;\">Saharsh Hariharan</a></div></html>");
+        jLabel25.setText("<html>Made with <span style=\"color:red;\">&hearts;</span> by Ani Srikanth and Saharsh Hariharan</html>");
 
         javax.swing.GroupLayout welcomePanelLayout = new javax.swing.GroupLayout(welcomePanel);
         welcomePanel.setLayout(welcomePanelLayout);
@@ -1168,17 +1168,17 @@ public class JFrame extends javax.swing.JFrame {
             .addGroup(welcomePanelLayout.createSequentialGroup()
                 .addGroup(welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(welcomePanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(welcomePanelLayout.createSequentialGroup()
                         .addGroup(welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(welcomePanelLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(welcomePanelLayout.createSequentialGroup()
                                 .addGap(59, 59, 59)
-                                .addComponent(jLabel24)))
-                        .addGap(0, 25, Short.MAX_VALUE)))
+                                .addComponent(jLabel24))
+                            .addGroup(welcomePanelLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 25, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomePanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         welcomePanelLayout.setVerticalGroup(
@@ -1347,7 +1347,7 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_torontoRadioButtonActionPerformed
     
     private void addFTEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFTEmployeeButtonActionPerformed
-
+        
         yearlySalary = Integer.parseInt(yearlySalaryField.getText());
         FullTimeEmployee someEmployee = new FullTimeEmployee(empNum, fN, lN, gender, location, deductRate, yearlySalary);
         myHT.addEmployee(someEmployee);
@@ -1476,6 +1476,7 @@ public class JFrame extends javax.swing.JFrame {
         hourlyWageInfoField.setEnabled(true);
         hoursPerWeekInfoField.setEnabled(true);
         weeksPerYearInfoField.setEnabled(true);
+        yearlySalaryInfoField.setText("");
         yearlySalaryInfoField.setEnabled(false);
         
     }//GEN-LAST:event_partTimeInfoRadioButtonActionPerformed
@@ -1485,6 +1486,9 @@ public class JFrame extends javax.swing.JFrame {
         hourlyWageInfoField.setEnabled(false);
         hoursPerWeekInfoField.setEnabled(false);
         weeksPerYearInfoField.setEnabled(false);
+        hourlyWageInfoField.setText("");
+        hoursPerWeekInfoField.setText("");
+        weeksPerYearInfoField.setText("");
         yearlySalaryInfoField.setEnabled(true);
     }//GEN-LAST:event_fullTimeInfoRadioButtonActionPerformed
     
@@ -1545,61 +1549,66 @@ public class JFrame extends javax.swing.JFrame {
         EmployeeInfo found = null;
         found = myHT.search(toFind);
         
-            fNInfoField.setText(found.getFirstName());
-            lNInfoField.setText(found.getLastName());
-            deductInfoField.setText(Integer.toString((int) found.getDeductRate()));
+        fNInfoField.setText(found.getFirstName());
+        lNInfoField.setText(found.getLastName());
+        deductInfoField.setText(Integer.toString((int) found.getDeductRate()));
+        hoursPerWeekInfoField.setText("");
+        hourlyWageInfoField.setText("");
+        weeksPerYearInfoField.setText("");
+        yearlySalaryInfoField.setText("");
+        
+        
+        if(found instanceof PartTimeEmployee){
+            partTimeInfoRadioButton.setSelected(true);
             
-            if(found instanceof PartTimeEmployee){
-                partTimeInfoRadioButton.setSelected(true);
-                
-                hoursPerWeekInfoField.setText(Double.toString(((PartTimeEmployee) found).getHoursPerWeek()));
-                hoursPerWeekInfoField.setEditable(false);
-                hourlyWageInfoField.setText(Double.toString(((PartTimeEmployee) found).getHourlyWage()));
-                hourlyWageInfoField.setEditable(false);
-                weeksPerYearInfoField.setText(Double.toString(((PartTimeEmployee) found).getWeeksPerYear()));
-                weeksPerYearInfoField.setEditable(false);
-                
-            } else if (found instanceof FullTimeEmployee){
-                fullTimeInfoRadioButton.setSelected(true);
-                yearlySalaryInfoField.setText(Double.toString(((FullTimeEmployee) found).AnnualGrossIncome()));
-            }
-            
-            if (found.getGender() == Gender.MALE){
-                maleInfoRadioButton.setSelected(true);
-            } else if(found.getGender() == Gender.FEMALE){
-                femaleInfoRadioButton.setSelected(true);
-            } else if(found.getGender() == Gender.OTHER){
-                otherInfoRadioButton.setSelected(true);
-            }
-            
-            if (found.getLocation() == Location.BRAMPTON){
-                brampInfoRadioButton.setSelected(true);
-            } else if (found.getLocation() == Location.MISSISSAUGA){
-                missInfoRadioButton.setSelected(true);
-            } else if (found.getLocation() == Location.TORONTO){
-                torontoInfoRadioButton.setSelected(true);
-            }
-            
-            fNInfoField.setEditable(false);
-            lNInfoField.setEditable(false);
-            deductInfoField.setEditable(false);
-            hourlyWageInfoField.setEditable(false);
+            hoursPerWeekInfoField.setText(Double.toString(((PartTimeEmployee) found).getHoursPerWeek()));
             hoursPerWeekInfoField.setEditable(false);
+            hourlyWageInfoField.setText(Double.toString(((PartTimeEmployee) found).getHourlyWage()));
+            hourlyWageInfoField.setEditable(false);
+            weeksPerYearInfoField.setText(Double.toString(((PartTimeEmployee) found).getWeeksPerYear()));
             weeksPerYearInfoField.setEditable(false);
-            yearlySalaryInfoField.setEditable(false);
-            maleInfoRadioButton.setEnabled(false);
-            maleInfoRadioButton.setEnabled(false);
-            femaleInfoRadioButton.setEnabled(false);
-            otherInfoRadioButton.setEnabled(false);
-            missInfoRadioButton.setEnabled(false);
-            brampInfoRadioButton.setEnabled(false);
-            torontoInfoRadioButton.setEnabled(false);
-            partTimeInfoRadioButton.setEnabled(false);
-            fullTimeInfoRadioButton.setEnabled(false);
             
-            
-            preEdit.setVisible(true);
-            duringEdit.setVisible(false);
+        } else if (found instanceof FullTimeEmployee){
+            fullTimeInfoRadioButton.setSelected(true);
+            yearlySalaryInfoField.setText(Double.toString(((FullTimeEmployee) found).AnnualGrossIncome()));
+        }
+        
+        if (found.getGender() == Gender.MALE){
+            maleInfoRadioButton.setSelected(true);
+        } else if(found.getGender() == Gender.FEMALE){
+            femaleInfoRadioButton.setSelected(true);
+        } else if(found.getGender() == Gender.OTHER){
+            otherInfoRadioButton.setSelected(true);
+        }
+        
+        if (found.getLocation() == Location.BRAMPTON){
+            brampInfoRadioButton.setSelected(true);
+        } else if (found.getLocation() == Location.MISSISSAUGA){
+            missInfoRadioButton.setSelected(true);
+        } else if (found.getLocation() == Location.TORONTO){
+            torontoInfoRadioButton.setSelected(true);
+        }
+        
+        fNInfoField.setEditable(false);
+        lNInfoField.setEditable(false);
+        deductInfoField.setEditable(false);
+        hourlyWageInfoField.setEditable(false);
+        hoursPerWeekInfoField.setEditable(false);
+        weeksPerYearInfoField.setEditable(false);
+        yearlySalaryInfoField.setEditable(false);
+        maleInfoRadioButton.setEnabled(false);
+        maleInfoRadioButton.setEnabled(false);
+        femaleInfoRadioButton.setEnabled(false);
+        otherInfoRadioButton.setEnabled(false);
+        missInfoRadioButton.setEnabled(false);
+        brampInfoRadioButton.setEnabled(false);
+        torontoInfoRadioButton.setEnabled(false);
+        partTimeInfoRadioButton.setEnabled(false);
+        fullTimeInfoRadioButton.setEnabled(false);
+        
+        
+        preEdit.setVisible(true);
+        duringEdit.setVisible(false);
         
     }//GEN-LAST:event_cancelButtonActionPerformed
     
