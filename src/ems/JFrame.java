@@ -12,8 +12,10 @@ import hashtables.Location;
 import hashtables.MyHashTable;
 import hashtables.PartTimeEmployee;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -131,6 +133,7 @@ public class JFrame extends javax.swing.JFrame {
         viewPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        View = new javax.swing.JButton();
         addPanel = new javax.swing.JPanel();
         fNField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -257,11 +260,11 @@ public class JFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewButtonMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                viewButtonMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 viewButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewButtonMouseExited(evt);
             }
         });
 
@@ -897,21 +900,35 @@ public class JFrame extends javax.swing.JFrame {
         jTable2.setCellSelectionEnabled(true);
         jScrollPane3.setViewportView(jTable2);
 
+        View.setText("jButton1");
+        View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
         viewPanel.setLayout(viewPanelLayout);
         viewPanelLayout.setHorizontalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(viewPanelLayout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(View)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(View)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         parentPanel.add(viewPanel, "card6");
@@ -1666,6 +1683,20 @@ public class JFrame extends javax.swing.JFrame {
         duringEdit.setVisible(false);
         preEdit.setVisible(true);
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        ArrayList<EmployeeInfo> employees = new ArrayList();
+        myHT.displayToTable (employees);
+        int length = employees.size();
+        for (int i = 0; i < length; i++ ) {
+            String fn = employees.get(i).getFirstName();
+            String ln = employees.get(i).getLastName();
+            int empn = employees.get(i).getEmpNumber();
+            double dr = employees.get(i).getDeductRate();
+            model.addRow(new Object[]{fn, ln, empn, dr});
+        }
+    }//GEN-LAST:event_ViewActionPerformed
     
     private void setBackground(JPanel panel){
         panel.setBackground(new Color(148, 204, 248));
@@ -1721,6 +1752,7 @@ public class JFrame extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton View;
     private javax.swing.JPanel addButton;
     private javax.swing.JButton addContinueButton;
     private javax.swing.JButton addFTEmployeeButton;
