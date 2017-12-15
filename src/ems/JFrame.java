@@ -132,8 +132,12 @@ public class JFrame extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
         viewPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        PTETable = new javax.swing.JTable();
         View = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        FTETable1 = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         addPanel = new javax.swing.JPanel();
         fNField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -803,7 +807,7 @@ public class JFrame extends javax.swing.JFrame {
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(weeksPerYearField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
         partTimePanelLayout.setVerticalGroup(
             partTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -866,7 +870,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addGroup(fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(yearlySalaryField, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
         fullTimePanelLayout.setVerticalGroup(
             fullTimePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -886,24 +890,100 @@ public class JFrame extends javax.swing.JFrame {
 
         viewPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        PTETable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "FN", "LN", "##", "DR", "Sex", "Loc.", "HW", "HPW", "W/Y"
             }
-        ));
-        jTable2.setCellSelectionEnabled(true);
-        jScrollPane3.setViewportView(jTable2);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true, true
+            };
 
-        View.setText("jButton1");
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        PTETable.setCellSelectionEnabled(true);
+        jScrollPane3.setViewportView(PTETable);
+        PTETable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        if (PTETable.getColumnModel().getColumnCount() > 0) {
+            PTETable.getColumnModel().getColumn(0).setResizable(false);
+            PTETable.getColumnModel().getColumn(1).setResizable(false);
+            PTETable.getColumnModel().getColumn(2).setResizable(false);
+            PTETable.getColumnModel().getColumn(3).setResizable(false);
+            PTETable.getColumnModel().getColumn(4).setResizable(false);
+            PTETable.getColumnModel().getColumn(5).setResizable(false);
+            PTETable.getColumnModel().getColumn(6).setResizable(false);
+            PTETable.getColumnModel().getColumn(7).setResizable(false);
+            PTETable.getColumnModel().getColumn(8).setResizable(false);
+        }
+
+        View.setText("Click to View");
         View.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewActionPerformed(evt);
+            }
+        });
+
+        FTETable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "FN", "LN", "##", "DR", "Sex", "Loc.", "Salary"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        FTETable1.setCellSelectionEnabled(true);
+        jScrollPane4.setViewportView(FTETable1);
+        FTETable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        if (FTETable1.getColumnModel().getColumnCount() > 0) {
+            FTETable1.getColumnModel().getColumn(0).setResizable(false);
+            FTETable1.getColumnModel().getColumn(1).setResizable(false);
+            FTETable1.getColumnModel().getColumn(2).setResizable(false);
+            FTETable1.getColumnModel().getColumn(3).setResizable(false);
+            FTETable1.getColumnModel().getColumn(4).setResizable(false);
+            FTETable1.getColumnModel().getColumn(5).setResizable(false);
+            FTETable1.getColumnModel().getColumn(6).setResizable(false);
+        }
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jTextField1.setText("Part Time Employee Information");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jTextField2.setText("Full Time Employee Information");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
             }
         });
 
@@ -912,23 +992,40 @@ public class JFrame extends javax.swing.JFrame {
         viewPanelLayout.setHorizontalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(View)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(View)
+                        .addGap(185, 185, 185))))
+            .addGroup(viewPanelLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField2)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(View)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         parentPanel.add(viewPanel, "card6");
@@ -1192,7 +1289,7 @@ public class JFrame extends javax.swing.JFrame {
                             .addGroup(welcomePanelLayout.createSequentialGroup()
                                 .addGap(17, 17, 17)
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 25, Short.MAX_VALUE))
+                        .addGap(0, 21, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomePanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1685,7 +1782,8 @@ public class JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        DefaultTableModel pte = (DefaultTableModel) PTETable.getModel();
+        DefaultTableModel fte = (DefaultTableModel) FTETable1.getModel();
         ArrayList<EmployeeInfo> employees = new ArrayList();
         myHT.displayToTable (employees);
         int length = employees.size();
@@ -1694,9 +1792,27 @@ public class JFrame extends javax.swing.JFrame {
             String ln = employees.get(i).getLastName();
             int empn = employees.get(i).getEmpNumber();
             double dr = employees.get(i).getDeductRate();
-            model.addRow(new Object[]{fn, ln, empn, dr});
+            Gender gender = employees.get(i).getGender();
+            Location location = employees.get(i).getLocation();
+            if (employees.get(i) instanceof PartTimeEmployee) {
+                Double hw = ( (PartTimeEmployee) employees.get(i)).getHourlyWage();
+                Double hpw = ( (PartTimeEmployee) employees.get(i)).getHoursPerWeek();
+                Double wpy = ( (PartTimeEmployee) employees.get(i)).getWeeksPerYear();
+                pte.addRow(new Object[]{fn, ln, empn, dr, gender, location, hw, hpw, wpy});
+            } else if (employees.get(i) instanceof FullTimeEmployee) {
+                Double ys = ( (FullTimeEmployee) employees.get(i)).getYearlySalary();
+                fte.addRow(new Object[]{fn, ln, empn, dr, gender, location, ys});
+            }
         }
     }//GEN-LAST:event_ViewActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
     
     private void setBackground(JPanel panel){
         panel.setBackground(new Color(148, 204, 248));
@@ -1752,6 +1868,8 @@ public class JFrame extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable FTETable1;
+    private javax.swing.JTable PTETable;
     private javax.swing.JButton View;
     private javax.swing.JPanel addButton;
     private javax.swing.JButton addContinueButton;
@@ -1813,6 +1931,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -1829,7 +1948,8 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField lNField;
     private javax.swing.JTextField lNInfoField;
     private javax.swing.ButtonGroup locationGroup;
