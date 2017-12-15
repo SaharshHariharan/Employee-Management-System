@@ -1784,6 +1784,8 @@ public class JFrame extends javax.swing.JFrame {
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
         DefaultTableModel pte = (DefaultTableModel) PTETable.getModel();
         DefaultTableModel fte = (DefaultTableModel) FTETable1.getModel();
+        pte.getDataVector().removeAllElements();
+        fte.getDataVector().removeAllElements();
         ArrayList<EmployeeInfo> employees = new ArrayList();
         myHT.displayToTable (employees);
         int length = employees.size();
