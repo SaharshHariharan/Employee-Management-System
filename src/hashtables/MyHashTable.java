@@ -99,25 +99,24 @@ public class MyHashTable {
                 String line;
                 while ((line = reader.readLine()) != null) {
                        if ( line.equals("Part Time Employee")){
-                            line = reader.readLine();
-                            int empNum = Integer.parseInt(line);
-                            line = reader.readLine();
+                        line = reader.readLine();
+                        int empNum = Integer.parseInt(line);
+                        line = reader.readLine();
 			String firstName = line;
 			line = reader.readLine();
 			String lastName = line;
 			line = reader.readLine();
-			Gender gender = Gender.valueOf(line); 
+                        Double deductRate = Double.parseDouble(line);
+			line = reader.readLine();
+                        Gender gender = Gender.valueOf(line);
 			line = reader.readLine();
 			Location location = Location.valueOf(line);
-			line = reader.readLine();
-			Double deductRate = Double.parseDouble(line);
 			line = reader.readLine();
 			Double hourlyWage = Double.parseDouble(line);
 			line = reader.readLine();
 			Double hoursPerWeek = Double.parseDouble(line);
 			line = reader.readLine();
 			Double weeksPerYear = Double.parseDouble(line);
-			line = reader.readLine();
 			EmployeeInfo theEmployee = new PartTimeEmployee(empNum, firstName, lastName, gender, location,
 			deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
 			addEmployee(theEmployee);		
@@ -195,6 +194,7 @@ public class MyHashTable {
                     } else {
                         for (int j = 0; j < listSize; j++) { //we gucci
                             EmployeeInfo someEmployee = buckets[i].get(j);
+                            System.out.println(someEmployee.getEmpNumber());
                             b.add(someEmployee); //f
 			}
                     }	
