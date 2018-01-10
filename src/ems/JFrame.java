@@ -32,6 +32,7 @@ public class JFrame extends javax.swing.JFrame {
     double deductRate, hourlyWage, hoursPerWeek, weeksPerYear;
     
     int yearlySalary;//
+    //ihategithub<3
     
     
     /**
