@@ -1,16 +1,10 @@
-Full Time Employee
-323
-Ani
-Srikanth
-0.13
-MALE
-MISSISSAUGA
-1000.0
-Full Time Employee
-123
+Part Time Employee
+1
 Ani
 Srikanth
 0.0
 MALE
 MISSISSAUGA
-20000.0
+100.0
+100.0
+34.0
