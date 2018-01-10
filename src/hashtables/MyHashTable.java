@@ -88,7 +88,7 @@ public class MyHashTable {
 
 	}
         
-        public void readFromFile() {
+       public void readFromFile() {
             BufferedReader reader;
             
             try {
@@ -137,6 +137,7 @@ public class MyHashTable {
                         double yearlySalary = Double.parseDouble(line);
                         EmployeeInfo theEmployee = new FullTimeEmployee (empnum, firstname, lastname, gender, location, deductrate, yearlySalary);
                         addEmployee(theEmployee);
+
                     }
                        
                 }                 
@@ -147,6 +148,7 @@ public class MyHashTable {
                 //System.out.println("Error reading file");
             }
         }
+
         
         public void writeToFile() {
             try {
