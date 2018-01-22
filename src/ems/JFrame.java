@@ -275,11 +275,11 @@ public class JFrame extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewButtonMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                viewButtonMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 viewButtonMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewButtonMouseEntered(evt);
             }
         });
 
@@ -959,27 +959,28 @@ public class JFrame extends javax.swing.JFrame {
         viewPanel.setLayout(viewPanelLayout);
         viewPanelLayout.setHorizontalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewPanelLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78))
             .addGroup(viewPanelLayout.createSequentialGroup()
                 .addGroup(viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(View))
-                    .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addGap(141, 141, 141)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(viewPanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                        .addGap(218, 218, 218)
+                        .addComponent(View)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(View)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -1238,27 +1239,27 @@ public class JFrame extends javax.swing.JFrame {
             .addGroup(welcomePanelLayout.createSequentialGroup()
                 .addGroup(welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(welcomePanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(welcomePanelLayout.createSequentialGroup()
                         .addGroup(welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(welcomePanelLayout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(jLabel24))
+                                .addGap(77, 77, 77)
+                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(welcomePanelLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 142, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, welcomePanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(120, 120, 120)
+                                .addComponent(jLabel24)))
+                        .addGap(0, 82, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         welcomePanelLayout.setVerticalGroup(
             welcomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(welcomePanelLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103)
                 .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1362,8 +1363,27 @@ public class JFrame extends javax.swing.JFrame {
         System.out.println(someEmployee.getEmpNumber());
         myHT.addEmployee(someEmployee);
         JOptionPane.showMessageDialog(null, "Employee Added!");
+        
         clear();
         viewPanel.setVisible(true);
+        String type = null;
+        DefaultTableModel pte = (DefaultTableModel) jTable1.getModel();
+        pte.getDataVector().removeAllElements();
+        ArrayList<EmployeeInfo> employees = new ArrayList();
+        myHT.displayToTable (employees);
+        int length = employees.size();
+        for (int i = 0; i < length; i++ ) {
+            String fn = employees.get(i).getFirstName();
+            String ln = employees.get(i).getLastName();
+            int empn = employees.get(i).getEmpNumber();
+            if (employees.get(i) instanceof PartTimeEmployee) {
+                type = "Part Time";
+            } else if (employees.get(i) instanceof FullTimeEmployee) {
+                type = "Full Time";
+            }
+            pte.addRow(new Object[]{fn, ln, empn, type});
+        
+        }
     }//GEN-LAST:event_addPTEmployeeButtonActionPerformed
     
     private void hourlyWageFeildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hourlyWageFeildActionPerformed
@@ -1422,17 +1442,9 @@ public class JFrame extends javax.swing.JFrame {
         FullTimeEmployee someEmployee = new FullTimeEmployee(empNum, fN, lN, gender, location, deductRate, yearlySalary);
         myHT.addEmployee(someEmployee);
         JOptionPane.showMessageDialog(null, "Employee Successfully Added");
+        
         clear();
         viewPanel.setVisible(true);
-    }//GEN-LAST:event_addFTEmployeeButtonActionPerformed
-    
-    private void yearlySalaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlySalaryFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_yearlySalaryFieldActionPerformed
-    
-    private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
-        // TODO add your handling code here:
-        clear();
         String type = null;
         DefaultTableModel pte = (DefaultTableModel) jTable1.getModel();
         pte.getDataVector().removeAllElements();
@@ -1449,7 +1461,35 @@ public class JFrame extends javax.swing.JFrame {
                 type = "Full Time";
             }
             pte.addRow(new Object[]{fn, ln, empn, type});
+        
+        }
+    }//GEN-LAST:event_addFTEmployeeButtonActionPerformed
+    
+    private void yearlySalaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlySalaryFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yearlySalaryFieldActionPerformed
+    
+    private void viewButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewButtonMouseClicked
+        // TODO add your handling code here:
+        clear();
         viewPanel.setVisible(true);
+        String type = null;
+        DefaultTableModel pte = (DefaultTableModel) jTable1.getModel();
+        pte.getDataVector().removeAllElements();
+        ArrayList<EmployeeInfo> employees = new ArrayList();
+        myHT.displayToTable (employees);
+        int length = employees.size();
+        for (int i = 0; i < length; i++ ) {
+            String fn = employees.get(i).getFirstName();
+            String ln = employees.get(i).getLastName();
+            int empn = employees.get(i).getEmpNumber();
+            if (employees.get(i) instanceof PartTimeEmployee) {
+                type = "Part Time";
+            } else if (employees.get(i) instanceof FullTimeEmployee) {
+                type = "Full Time";
+            }
+            pte.addRow(new Object[]{fn, ln, empn, type});
+        
         }
     }//GEN-LAST:event_viewButtonMouseClicked
     
